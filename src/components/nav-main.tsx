@@ -1,12 +1,13 @@
-"use client"
+"use client";
 
-import { ChevronRight, type LucideIcon } from "lucide-react"
+import { ChevronRight, type LucideIcon } from "lucide-react";
+import { useState } from "react";
 
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible"
+} from "@/components/ui/collapsible";
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -16,22 +17,34 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
-export function NavMain({
-  items,
-}: {
-  items: {
-    title: string
-    url: string
-    icon?: LucideIcon
-    isActive?: boolean
-    items?: {
-      title: string
-      url: string
-    }[]
-  }[]
-}) {
+type NavItem = {
+  title: string;
+  url: string;
+  icon?: LucideIcon;
+  items?: {
+    title: string;
+    url: string;
+  }[];
+};
+
+export function NavMain({ items }: { items: NavItem[] }) {
+  const [activeMain, setActiveMain] = useState<string | null>("Dashboard");
+  const [activeAccountSub, setActiveAccountSub] = useState<string | null>(null);
+
+  const handleMainClick = (title: string) => {
+    if (["Dashboard", "Product", "Kunban"].includes(title)) {
+      setActiveMain(title);
+      setActiveAccountSub(null); // Clear sub-item
+    }
+  };
+
+  const handleAccountSubClick = (title: string) => {
+    setActiveAccountSub(title);
+    setActiveMain(null); // Clear main item
+  };
+
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Platform</SidebarGroupLabel>
@@ -40,34 +53,61 @@ export function NavMain({
           <Collapsible
             key={item.title}
             asChild
-            defaultOpen={item.isActive}
+            defaultOpen={item.title === "Account"}
             className="group/collapsible"
           >
             <SidebarMenuItem>
               <CollapsibleTrigger asChild>
-                <SidebarMenuButton tooltip={item.title}>
+                <SidebarMenuButton
+                  tooltip={item.title}
+                  onClick={() => handleMainClick(item.title)}
+                  className={
+                    ["Dashboard", "Product", "Kunban"].includes(item.title) &&
+                    activeMain === item.title
+                      ? "bg-gray-100"
+                      : ""
+                  }
+                >
                   {item.icon && <item.icon />}
                   <span>{item.title}</span>
-                  <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+
+                  {item.items?.length ? (
+                    <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                  ) : null}
                 </SidebarMenuButton>
               </CollapsibleTrigger>
-              <CollapsibleContent>
-                <SidebarMenuSub>
-                  {item.items?.map((subItem) => (
-                    <SidebarMenuSubItem key={subItem.title}>
-                      <SidebarMenuSubButton asChild>
-                        <a href={subItem.url}>
-                          <span>{subItem.title}</span>
-                        </a>
-                      </SidebarMenuSubButton>
-                    </SidebarMenuSubItem>
-                  ))}
-                </SidebarMenuSub>
-              </CollapsibleContent>
+
+              {item.title === "Account" && item.items?.length ? (
+                <CollapsibleContent>
+                  <SidebarMenuSub>
+                    {item.items.map((subItem) => (
+                      <SidebarMenuSubItem key={subItem.title}>
+                        <SidebarMenuSubButton
+                          asChild
+                          className={
+                            activeAccountSub === subItem.title
+                              ? "bg-gray-100"
+                              : ""
+                          }
+                        >
+                          <a
+                            href={subItem.url}
+                            onClick={() =>
+                              handleAccountSubClick(subItem.title)
+                            }
+                          >
+                            <span>{subItem.title}</span>
+                          </a>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
+                    ))}
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              ) : null}
             </SidebarMenuItem>
           </Collapsible>
         ))}
       </SidebarMenu>
     </SidebarGroup>
-  )
+  );
 }

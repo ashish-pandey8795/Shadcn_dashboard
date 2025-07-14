@@ -1,15 +1,15 @@
-import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
-import { SidebarTrigger } from "@/components/ui/sidebar"
-import { ModeToggle } from "./ModeToggle"
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { SidebarTrigger } from "@/components/ui/sidebar";
+import { ModeToggle } from "./ModeToggle";
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
+  // BreadcrumbPage,
+  // BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 export function SiteHeader() {
   return (
@@ -22,21 +22,20 @@ export function SiteHeader() {
         />
         <div>
           <Breadcrumb>
-  <BreadcrumbList>
-  
-    <BreadcrumbItem>
-      <BreadcrumbLink href="/components">Components</BreadcrumbLink>
-    </BreadcrumbItem>
-    <BreadcrumbSeparator />
-    <BreadcrumbItem>
-      <BreadcrumbPage>Overview</BreadcrumbPage>
-    </BreadcrumbItem>
-  </BreadcrumbList>
-</Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/dashboard">components</BreadcrumbLink>
+              </BreadcrumbItem>
+              {/* <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Overview</BreadcrumbPage>
+              </BreadcrumbItem> */}
+            </BreadcrumbList>
+          </Breadcrumb>
         </div>
         <div className="ml-auto flex items-center gap-2">
-          <ModeToggle/>
-          
+          <ModeToggle />
+
           <Button variant="ghost" asChild size="sm" className="hidden sm:flex">
             <a
               href="https://github.com/shadcn-ui/ui/tree/main/apps/v4/app/(examples)/dashboard"
@@ -50,5 +49,5 @@ export function SiteHeader() {
         </div>
       </div>
     </header>
-  )
+  );
 }
