@@ -24,7 +24,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 
-// This is sample data
+// // This is sample data
 const data = {
   user: {
     name: "shadcn",
@@ -109,20 +109,49 @@ const data = {
   ],
 }
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+// export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+//   return (
+//     <Sidebar collapsible="icon" {...props}>
+//       <SidebarHeader>
+//         <TeamSwitcher teams={data.teams} />
+//       </SidebarHeader>
+//       <SidebarContent>
+//         <NavMain items={data.navMain} />
+//         {/* <NavProjects projects={data.projects} /> */}
+//       </SidebarContent>
+//       <SidebarFooter>
+//         <NavUser user={data.user} />
+//       </SidebarFooter>
+//       <SidebarRail />
+//     </Sidebar>
+//   )
+// }
+
+
+export function AppSidebar({
+  activePage,
+  setActivePage,
+  ...props
+}: React.ComponentProps<typeof Sidebar> & {
+  activePage: string;
+  setActivePage: (title: string) => void;
+}) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        {/* <NavProjects projects={data.projects} /> */}
+        <NavMain
+          items={data.navMain}
+          activePage={activePage}
+          setActivePage={setActivePage}
+        />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }

@@ -1,17 +1,21 @@
 // pages/_app.tsx
-import "@/styles/globals.css";
-import type { AppProps } from "next/app";
-import { ThemeProvider } from "@/components/theme-provider";
+// pages/_app.tsx
+import '@/styles/globals.css'; // ✅ Adjust path if needed
+import App from 'next/app';
+import type { AppProps } from 'next/app';
+import { ActiveThemeProvider } from '@/components/active-theme'; // ✅ adjust path if needed
 
-export default function App({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="system"
-      enableSystem
-      disableTransitionOnChange
-    >
+    <ActiveThemeProvider>
       <Component {...pageProps} />
-    </ThemeProvider>
+    </ActiveThemeProvider>
   );
 }
+
+MyApp.getInitialProps = async (appContext: any) => {
+  const appProps = await App.getInitialProps(appContext);
+  return { ...appProps };
+};
+
+export default MyApp;
