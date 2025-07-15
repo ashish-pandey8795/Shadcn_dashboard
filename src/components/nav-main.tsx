@@ -153,11 +153,12 @@ export function NavMain({
                   tooltip={item.title}
                   onClick={() => handleMainClick(item.title)}
                   className={
-                    ["Dashboard", "Product", "Kunban"].includes(item.title) &&
-                    activePage === item.title
-                      ? "bg-gray-100"
-                      : ""
-                  }
+  ["Dashboard", "Product", "Kunban"].includes(item.title) &&
+  activePage === item.title
+    ? "bg-muted"
+    : ""
+}
+
                 >
                   {item.icon && <item.icon />}
                   <span>{item.title}</span>
@@ -177,7 +178,7 @@ export function NavMain({
                           asChild
                           className={
                             activeAccountSub === subItem.title
-                              ? "bg-gray-100"
+                              ? "bg-muted"
                               : ""
                           }
                         >
