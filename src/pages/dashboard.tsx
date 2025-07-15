@@ -92,22 +92,24 @@ export default function Page() {
     {activePage === "Dashboard" ? (
       <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
         <SectionCards />
-        <div className="px-4 lg:px-6 flex gap-4 justify-between">
-          <div className="w-[60%]">
-            <ChartBarInteractive />
-          </div>
-          <div className="w-[40%]">
-            <RecentSales />
-          </div>
-        </div>
-        <div className="px-4 lg:px-6 flex gap-4 justify-between">
-          <div className="w-[60%]">
-            <ChartAreaLegend />
-          </div>
-          <div className="w-[40%]">
-            <ChartPieDonutText />
-          </div>
-        </div>
+        <div className="px-4 lg:px-6 flex flex-col md:flex-row gap-4 justify-between">
+  <div className="w-full md:w-[60%]">
+    <ChartBarInteractive />
+  </div>
+  <div className="w-full md:w-[40%]">
+    <RecentSales />
+  </div>
+</div>
+
+<div className="px-4 lg:px-6 flex flex-col md:flex-row gap-4 justify-between mt-4">
+  <div className="w-full md:w-[60%]">
+    <ChartAreaLegend />
+  </div>
+  <div className="w-full md:w-[40%]">
+    <ChartPieDonutText />
+  </div>
+</div>
+
       </div>
     ) : activePage === "Product" ? (
       <div className="px-4 py-6">

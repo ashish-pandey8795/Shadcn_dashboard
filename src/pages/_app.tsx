@@ -1,9 +1,7 @@
-// pages/_app.tsx
-// pages/_app.tsx
-import '@/styles/globals.css'; // ✅ Adjust path if needed
-import App from 'next/app';
+import '@/styles/globals.css';
+import App, { AppContext } from 'next/app';
 import type { AppProps } from 'next/app';
-import { ActiveThemeProvider } from '@/components/active-theme'; // ✅ adjust path if needed
+import { ActiveThemeProvider } from '@/components/active-theme';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -13,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-MyApp.getInitialProps = async (appContext: any) => {
+MyApp.getInitialProps = async (appContext: AppContext) => {
   const appProps = await App.getInitialProps(appContext);
   return { ...appProps };
 };

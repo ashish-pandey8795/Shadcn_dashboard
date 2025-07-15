@@ -3,6 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Shield, User2 } from "lucide-react";
+import Image from 'next/image';
 
 export default function Profile() {
   const [activeTab, setActiveTab] = useState("profile");
@@ -77,10 +78,18 @@ export default function Profile() {
                 <p className="text-muted-foreground mb-2 font-medium">Connected accounts</p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 text-sm">
-                    <img
+                    {/* <img
                       src="https://www.svgrepo.com/show/475656/google-color.svg"
                       alt="google"
                       className="w-4 h-4"
+                    /> */}
+                  
+                    <Image
+                      src="https://www.svgrepo.com/show/475656/google-color.svg"
+                      alt="Profile"
+                      width={100}
+                      height={100}
+                       className="w-4 h-4"
                     />
                     Google • pandeyashishsep11@gmail.com
                   </div>

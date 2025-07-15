@@ -1,5 +1,5 @@
 // app/layout.tsx
-import './globals.css';
+import '../styles/globals.css';
 import { ActiveThemeProvider } from '@/components/active-theme';
 import { ReactNode } from 'react';
 

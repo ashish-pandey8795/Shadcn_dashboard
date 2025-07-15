@@ -1,10 +1,11 @@
 
 
 
-// 'use client'
 
-// import * as React from "react"
-// import { ChevronsUpDown, Plus } from "lucide-react"
+// 'use client';
+
+// import * as React from 'react';
+// import { ChevronsUpDown, Plus } from 'lucide-react';
 
 // import {
 //   DropdownMenu,
@@ -14,30 +15,38 @@
 //   DropdownMenuSeparator,
 //   DropdownMenuShortcut,
 //   DropdownMenuTrigger,
-// } from "@/components/ui/dropdown-menu"
+// } from '@/components/ui/dropdown-menu';
 
 // import {
 //   SidebarMenu,
 //   SidebarMenuButton,
 //   SidebarMenuItem,
 //   useSidebar,
-// } from "@/components/ui/sidebar"
+// } from '@/components/ui/sidebar';
 
-// export function TeamSwitcher({
-//   teams,
-// }: {
-//   teams: {
-//     name: string
-//     logo: React.ElementType
-//     plan: string
-//   }[]
-// }) {
-//   const { isMobile } = useSidebar()
-//   const [activeTeam, setActiveTeam] = React.useState(teams[0])
+// import { useThemeConfig } from '@/components/active-theme';
 
-//   if (!activeTeam) return null
+// type Team = {
+//   name: string;
+//   logo: React.ElementType;
+//   plan: string;
+//   theme?: string; // Optional: attach a theme to each team
+// };
 
-//   const ActiveLogo = activeTeam.logo
+// export function TeamSwitcher({ teams }: { teams: Team[] }) {
+//   const { isMobile } = useSidebar();
+//   const { setActiveTheme } = useThemeConfig();
+
+//   const [activeTeam, setActiveTeam] = React.useState<Team>(teams[0]);
+
+//   if (!activeTeam) return null;
+
+//   const ActiveLogo = activeTeam.logo;
+
+//   const handleSelectTeam = (team: Team, index: number) => {
+//     setActiveTeam(team);
+//     if (team.theme) setActiveTheme(team.theme);
+//   };
 
 //   return (
 //     <SidebarMenu>
@@ -61,7 +70,7 @@
 //           <DropdownMenuContent
 //             className="min-w-56 rounded-lg"
 //             align="start"
-//             side={isMobile ? "bottom" : "right"}
+//             side={isMobile ? 'bottom' : 'right'}
 //             sideOffset={4}
 //           >
 //             <DropdownMenuLabel className="text-xs text-muted-foreground">
@@ -69,11 +78,11 @@
 //             </DropdownMenuLabel>
 
 //             {teams.map((team, index) => {
-//               const TeamLogo = team.logo
+//               const TeamLogo = team.logo;
 //               return (
 //                 <DropdownMenuItem
 //                   key={team.name}
-//                   onClick={() => setActiveTeam(team)}
+//                   onClick={() => handleSelectTeam(team, index)}
 //                   className="gap-2 p-2"
 //                 >
 //                   <div className="flex size-6 items-center justify-center rounded-md border">
@@ -82,7 +91,7 @@
 //                   {team.name}
 //                   <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
 //                 </DropdownMenuItem>
-//               )
+//               );
 //             })}
 
 //             <DropdownMenuSeparator />
@@ -97,12 +106,8 @@
 //         </DropdownMenu>
 //       </SidebarMenuItem>
 //     </SidebarMenu>
-//   )
+//   );
 // }
-
-
-
-
 
 
 
@@ -135,20 +140,19 @@ type Team = {
   name: string;
   logo: React.ElementType;
   plan: string;
-  theme?: string; // Optional: attach a theme to each team
+  theme?: string;
 };
 
 export function TeamSwitcher({ teams }: { teams: Team[] }) {
   const { isMobile } = useSidebar();
   const { setActiveTheme } = useThemeConfig();
-
   const [activeTeam, setActiveTeam] = React.useState<Team>(teams[0]);
 
   if (!activeTeam) return null;
 
   const ActiveLogo = activeTeam.logo;
 
-  const handleSelectTeam = (team: Team, index: number) => {
+  const handleSelectTeam = (team: Team) => {
     setActiveTeam(team);
     if (team.theme) setActiveTheme(team.theme);
   };
@@ -172,6 +176,7 @@ export function TeamSwitcher({ teams }: { teams: Team[] }) {
               <ChevronsUpDown className="ml-auto size-4 opacity-50" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
+
           <DropdownMenuContent
             className="min-w-56 rounded-lg"
             align="start"
@@ -187,7 +192,7 @@ export function TeamSwitcher({ teams }: { teams: Team[] }) {
               return (
                 <DropdownMenuItem
                   key={team.name}
-                  onClick={() => handleSelectTeam(team, index)}
+                  onClick={() => handleSelectTeam(team)}
                   className="gap-2 p-2"
                 >
                   <div className="flex size-6 items-center justify-center rounded-md border">
@@ -213,7 +218,3 @@ export function TeamSwitcher({ teams }: { teams: Team[] }) {
     </SidebarMenu>
   );
 }
-
-
-
-
