@@ -112,7 +112,6 @@ type NavItem = {
 //   );
 // }
 
-
 export function NavMain({
   items,
   activePage,
@@ -133,7 +132,7 @@ export function NavMain({
 
   const handleAccountSubClick = (title: string) => {
     setActiveAccountSub(title);
-    setActivePage("Account");
+    setActivePage(title);
   };
 
   return (
@@ -153,12 +152,11 @@ export function NavMain({
                   tooltip={item.title}
                   onClick={() => handleMainClick(item.title)}
                   className={
-  ["Dashboard", "Product", "Kunban"].includes(item.title) &&
-  activePage === item.title
-    ? "bg-muted"
-    : ""
-}
-
+                    ["Dashboard", "Product", "Kunban"].includes(item.title) &&
+                    activePage === item.title
+                      ? "bg-muted"
+                      : ""
+                  }
                 >
                   {item.icon && <item.icon />}
                   <span>{item.title}</span>
@@ -177,16 +175,12 @@ export function NavMain({
                         <SidebarMenuSubButton
                           asChild
                           className={
-                            activeAccountSub === subItem.title
-                              ? "bg-muted"
-                              : ""
+                            activeAccountSub === subItem.title ? "bg-muted" : ""
                           }
                         >
                           <a
                             href={subItem.url}
-                            onClick={() =>
-                              handleAccountSubClick(subItem.title)
-                            }
+                            onClick={() => handleAccountSubClick(subItem.title)}
                           >
                             <span>{subItem.title}</span>
                           </a>
