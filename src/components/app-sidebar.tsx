@@ -23,6 +23,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
+// import { Flame, Leaf, Sun } from 'lucide-react';
 
 // // This is sample data
 const data = {
@@ -109,6 +110,12 @@ const data = {
   ],
 }
 
+// const teams = [
+//   { name: 'Fire Team', logo: Flame, plan: 'Pro', theme: 'amber' },
+//   { name: 'Nature Squad', logo: Leaf, plan: 'Free', theme: 'green' },
+//   { name: 'Skyline Devs', logo: Sun, plan: 'Pro', theme: 'blue' },
+// ];
+
 // export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 //   return (
 //     <Sidebar collapsible="icon" {...props}>
@@ -140,6 +147,8 @@ export function AppSidebar({
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
+        {/* <TeamSwitcher teams={teams} /> */}
+
       </SidebarHeader>
       <SidebarContent>
         <NavMain

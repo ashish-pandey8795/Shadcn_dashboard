@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { ModeToggle } from "./ModeToggle";
+// import { FaGithub } from "react-icons/fa";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -11,10 +12,12 @@ import {
   // BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { ThemeSelector } from "./theme-selector";
+import SearchInput from "./SearchInput";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 export function SiteHeader() {
   return (
-    <header className="flex h-[var(--header-height)] shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-[.has-data-[collapsible=icon]]/sidebar-wrapper:h-[var(--header-height)]">
+    <header className="flex h-[var(--header-height)] shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-[.has-data-[collapsible=icon]]/sidebar-wrapper:h-[var(--header-height)] ">
       <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
         <SidebarTrigger className="-ml-1" />
         <Separator
@@ -35,19 +38,25 @@ export function SiteHeader() {
           </Breadcrumb>
         </div>
         <div className="ml-auto flex items-center gap-2">
-          <ModeToggle />
-          <ThemeSelector />
-
-          <Button variant="ghost" asChild size="sm" className="hidden sm:flex">
+             <Button variant="ghost" asChild size="sm" className="hidden sm:flex">
             <a
               href="https://github.com/shadcn-ui/ui/tree/main/apps/v4/app/(examples)/dashboard"
               rel="noopener noreferrer"
               target="_blank"
               className="dark:text-foreground"
             >
-              GitHub
+             {/* <FaGithub /> */}GitHub
             </a>
           </Button>
+          <SearchInput/>
+          <ModeToggle />
+           <Avatar>
+        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
+          <ThemeSelector />
+
+       
         </div>
       </div>
     </header>
