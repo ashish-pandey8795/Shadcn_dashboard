@@ -38,7 +38,7 @@ const chartConfig = {
   },
   mobile: {
     label: "Mobile",
-    color: "var(--chart-2)",
+    color: "var(--chart-1)",
   },
 } satisfies ChartConfig
 
@@ -53,45 +53,56 @@ export function ChartAreaLegend() {
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig} className="h-[250px] w-full">
-          <AreaChart
-            accessibilityLayer
-            data={chartData}
-            margin={{
-              left: 12,
-              right: 12,
-            }}
-            
-          >
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="month"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={8}
-              tickFormatter={(value) => value.slice(0, 3)}
-            />
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent indicator="line" />}
-            />
-            <Area
-              dataKey="mobile"
-              type="natural"
-              fill="var(--color-mobile)"
-              fillOpacity={0.4}
-              stroke="var(--color-mobile)"
-              stackId="a"
-            />
-            <Area
-              dataKey="desktop"
-              type="natural"
-              fill="var(--color-desktop)"
-              fillOpacity={0.4}
-              stroke="var(--color-desktop)"
-              stackId="a"
-            />
-            <ChartLegend content={<ChartLegendContent />} />
-          </AreaChart>
+      <AreaChart
+  accessibilityLayer
+  data={chartData}
+  margin={{ left: 12, right: 12 }}
+>
+  {/* Gradient Opacity Definitions */}
+  <defs>
+    <linearGradient id="gradient-mobile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="var(--color-mobile)" stopOpacity="0.4" />
+      <stop offset="100%" stopColor="var(--color-mobile)" stopOpacity="0.05" />
+    </linearGradient>
+    <linearGradient id="gradient-desktop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="var(--color-desktop)" stopOpacity="0.4" />
+      <stop offset="100%" stopColor="var(--color-desktop)" stopOpacity="0.05" />
+    </linearGradient>
+  </defs>
+
+  <CartesianGrid vertical={false} />
+
+  <XAxis
+    dataKey="month"
+    tickLine={false}
+    axisLine={false}
+    tickMargin={8}
+    tickFormatter={(value) => value.slice(0, 3)}
+  />
+
+  <ChartTooltip
+    cursor={false}
+    content={<ChartTooltipContent indicator="line" />}
+  />
+
+  <Area
+    dataKey="mobile"
+    type="natural"
+    stroke="var(--color-mobile)"
+    fill="url(#gradient-mobile)"
+    stackId="a"
+  />
+  <Area
+    dataKey="desktop"
+    type="natural"
+    stroke="var(--color-desktop)"
+    fill="url(#gradient-desktop)"
+    stackId="a"
+  />
+
+  <ChartLegend content={<ChartLegendContent />} />
+</AreaChart>
+
         </ChartContainer>
       </CardContent>
       <CardFooter>
