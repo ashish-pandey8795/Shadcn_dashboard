@@ -110,29 +110,7 @@ const data = {
   ],
 }
 
-// const teams = [
-//   { name: 'Fire Team', logo: Flame, plan: 'Pro', theme: 'amber' },
-//   { name: 'Nature Squad', logo: Leaf, plan: 'Free', theme: 'green' },
-//   { name: 'Skyline Devs', logo: Sun, plan: 'Pro', theme: 'blue' },
-// ];
 
-// export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-//   return (
-//     <Sidebar collapsible="icon" {...props}>
-//       <SidebarHeader>
-//         <TeamSwitcher teams={data.teams} />
-//       </SidebarHeader>
-//       <SidebarContent>
-//         <NavMain items={data.navMain} />
-//         {/* <NavProjects projects={data.projects} /> */}
-//       </SidebarContent>
-//       <SidebarFooter>
-//         <NavUser user={data.user} />
-//       </SidebarFooter>
-//       <SidebarRail />
-//     </Sidebar>
-//   )
-// }
 
 
 export function AppSidebar({

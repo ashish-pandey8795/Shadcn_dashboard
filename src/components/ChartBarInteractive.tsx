@@ -1,4 +1,3 @@
-
 // "use client"
 
 // import { TrendingUp } from "lucide-react"
@@ -80,10 +79,10 @@
 //   )
 // }
 
-"use client"
+"use client";
 
-import { TrendingUp } from "lucide-react"
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
+import { TrendingUp } from "lucide-react";
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 
 import {
   Card,
@@ -92,15 +91,15 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
 
-export const description = "A multiple bar chart"
+export const description = "A multiple bar chart";
 
 const chartData = [
   { date: "01 Jan 2024", desktop: 120, mobile: 80, tablet: 40 },
@@ -119,8 +118,7 @@ const chartData = [
   { date: "15 Jul 2024", desktop: 230, mobile: 160, tablet: 92 },
   { date: "01 Aug 2024", desktop: 175, mobile: 135, tablet: 58 },
   { date: "15 Aug 2024", desktop: 220, mobile: 170, tablet: 95 },
-]
-
+];
 
 const chartConfig = {
   desktop: {
@@ -131,7 +129,7 @@ const chartConfig = {
     label: "Mobile",
     color: "var(--chart-2)",
   },
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 export function ChartBarInteractive() {
   return (
@@ -142,23 +140,39 @@ export function ChartBarInteractive() {
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig} className="h-[235px] w-full">
-          <BarChart accessibilityLayer data={chartData}>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} horizontal={true} />
-            <XAxis
-  dataKey="date"
-  tickLine={false}
-  tickMargin={10}
-  axisLine={false}
-  tickFormatter={(value) => value.slice(0, 6)} // shows "01 Jan"
-/>
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent indicator="dashed" />}
-            />
-            <Bar dataKey="desktop" fill="var(--chart-1)" radius={4} />
-<Bar dataKey="mobile" fill="var(--chart-2)" radius={4} />
-<Bar dataKey="tablet" fill="var(--chart-3)" radius={4} />
-          </BarChart>
+         <BarChart accessibilityLayer data={chartData}>
+  <defs>
+    <linearGradient id="gradient-desktop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="var(--chart-1)" stopOpacity="1" />
+      <stop offset="100%" stopColor="var(--chart-1)" stopOpacity="0.1" />
+    </linearGradient>
+    <linearGradient id="gradient-mobile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="var(--chart-1)" stopOpacity="1" />
+      <stop offset="100%" stopColor="var(--chart-1)" stopOpacity="0.1" />
+    </linearGradient>
+    <linearGradient id="gradient-tablet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="var(--chart-1)" stopOpacity="1" />
+      <stop offset="100%" stopColor="var(--chart-1)" stopOpacity="0.1" />
+    </linearGradient>
+  </defs>
+
+  <CartesianGrid strokeDasharray="3 3" vertical={false} horizontal={true} />
+  <XAxis
+    dataKey="date"
+    tickLine={false}
+    tickMargin={10}
+    axisLine={false}
+    tickFormatter={(value) => value.slice(0, 6)}
+  />
+  <ChartTooltip
+    cursor={false}
+    content={<ChartTooltipContent indicator="dashed" />}
+  />
+  <Bar dataKey="desktop" fill="url(#gradient-desktop)" radius={4} />
+  <Bar dataKey="mobile" fill="url(#gradient-mobile)" radius={4} />
+  <Bar dataKey="tablet" fill="url(#gradient-tablet)" radius={4} />
+</BarChart>
+
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
@@ -170,6 +184,5 @@ export function ChartBarInteractive() {
         </div>
       </CardFooter>
     </Card>
-  )
+  );
 }
-

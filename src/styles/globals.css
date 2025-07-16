@@ -285,12 +285,18 @@ body {
   }
 }
 
-
+[data-theme='default'] {
+  --primary: oklch(21.863% 0.00389 285.987);
+  --primary-foreground: oklch(0.985 0 0);
+  --chart-1: oklch(48.05% 0 0);
+  /* --background: oklch(1 0 0);  */
+  /* --foreground: oklch(0.15 0 0);  */
+}
 
 [data-theme='blue'] {
   --primary: oklch(0.25 0.15 260);
   --primary-foreground: oklch(0.985 0 0);
-  --chart-1: oklch(0.6 0.15 260);
+ --chart-1: var(--color-blue-600);
   /* --background: oklch(1 0 0);  */
   /* --foreground: oklch(0.15 0 0);  */
 }
@@ -298,20 +304,20 @@ body {
 [data-theme='amber'] {
   --primary: oklch(0.8 0.19 85);
   --primary-foreground: oklch(0.15 0 0);
-  --chart-1: oklch(0.828 0.189 84.429);
+  --chart-1: oklch(74.9% 0.204 75);
 }
 
 [data-theme='green'] {
   --primary: oklch(0.7 0.15 145);
   --primary-foreground: oklch(0.985 0 0);
-  --chart-1: oklch(0.646 0.222 145);
+  --chart-1:  oklch(78.59% 0.177 113.3);
 }
 
 
 [data-theme='mono-scaled'] {
   --primary: oklch(0.6 0 0);
   --primary-foreground: oklch(0.95 0 0);
-  --chart-1: oklch(0.3 0 0);
+  --chart-1: var(--color-neutral-600);
 }
 
 

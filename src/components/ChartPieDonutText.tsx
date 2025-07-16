@@ -1,3 +1,6 @@
+
+
+
 // "use client"
 
 // import * as React from "react"
@@ -39,19 +42,19 @@
 //   },
 //   safari: {
 //     label: "Safari",
-//     color: "var(--chart-2)",
+//     color: "var(--chart-1)",
 //   },
 //   firefox: {
 //     label: "Firefox",
-//     color: "var(--chart-3)",
+//     color: "var(--chart-1)",
 //   },
 //   edge: {
 //     label: "Edge",
-//     color: "var(--chart-4)",
+//     color: "var(--chart-1)",
 //   },
 //   other: {
 //     label: "Other",
-//     color: "var(--chart-5)",
+//     color: "var(--chart-1)",
 //   },
 // } satisfies ChartConfig
 
@@ -153,12 +156,13 @@ import {
 
 export const description = "A donut chart with text"
 
+// Set gradient fill IDs
 const chartData = [
-  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "firefox", visitors: 287, fill: "var(--color-firefox)" },
-  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "other", visitors: 190, fill: "var(--color-other)" },
+  { browser: "chrome", visitors: 275, fill: "url(#gradient-chrome)" },
+  { browser: "safari", visitors: 200, fill: "url(#gradient-safari)" },
+  { browser: "firefox", visitors: 287, fill: "url(#gradient-firefox)" },
+  { browser: "edge", visitors: 173, fill: "url(#gradient-edge)" },
+  { browser: "other", visitors: 190, fill: "url(#gradient-other)" },
 ]
 
 const chartConfig = {
@@ -171,19 +175,19 @@ const chartConfig = {
   },
   safari: {
     label: "Safari",
-    color: "var(--chart-2)",
+    color: "var(--chart-1)",
   },
   firefox: {
     label: "Firefox",
-    color: "var(--chart-3)",
+    color: "var(--chart-1)",
   },
   edge: {
     label: "Edge",
-    color: "var(--chart-4)",
+    color: "var(--chart-1)",
   },
   other: {
     label: "Other",
-    color: "var(--chart-5)",
+    color: "var(--chart-1)",
   },
 } satisfies ChartConfig
 
@@ -204,10 +208,40 @@ export function ChartPieDonutText() {
           className="mx-auto aspect-square max-h-[250px]"
         >
           <PieChart>
+            {/* Gradient Definitions */}
+         <defs>
+  <linearGradient id="gradient-chrome" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stopColor="var(--color-chrome)" stopOpacity="0.1" />
+    <stop offset="100%" stopColor="var(--color-chrome)" stopOpacity="0.2" />
+  </linearGradient>
+
+  <linearGradient id="gradient-safari" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stopColor="var(--color-safari)" stopOpacity="0.3" />
+    <stop offset="100%" stopColor="var(--color-safari)" stopOpacity="0.4" />
+  </linearGradient>
+
+  <linearGradient id="gradient-firefox" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stopColor="var(--color-firefox)" stopOpacity="0.5" />
+    <stop offset="100%" stopColor="var(--color-firefox)" stopOpacity="0.6" />
+  </linearGradient>
+
+  <linearGradient id="gradient-edge" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stopColor="var(--color-edge)" stopOpacity="0.7" />
+    <stop offset="100%" stopColor="var(--color-edge)" stopOpacity="0.8" />
+  </linearGradient>
+
+  <linearGradient id="gradient-other" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stopColor="var(--color-other)" stopOpacity="0.9" />
+    <stop offset="100%" stopColor="var(--color-other)" stopOpacity="1" />
+  </linearGradient>
+</defs>
+
+
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
+
             <Pie
               data={chartData}
               dataKey="visitors"
