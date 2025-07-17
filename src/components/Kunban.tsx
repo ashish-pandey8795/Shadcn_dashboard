@@ -41,7 +41,7 @@ export default function Kanban() {
 
           {/* Tasks */}
           <ScrollArea className="h-[460px] px-2 py-3">
-            <Card className="mb-4  py-7 rounded-lg border shadow-sm bg-white">
+            <Card className="mb-4  py-7 rounded-lg border shadow-sm bg-background">
               <div className="flex justify-between px-4 items-center text-xs text-muted-foreground">
                 <span className="cursor-move font-bold ">⋮⋮</span>
                 <Badge variant="outline" className="px-2 py-0.5 text-xs">Task</Badge>
@@ -52,7 +52,7 @@ export default function Kanban() {
               </div>
             </Card>
 
-                   <Card className="mb-4  py-7 rounded-lg border shadow-sm bg-white">
+                   <Card className="mb-4  py-7 rounded-lg border shadow-sm bg-background">
               <div className="flex justify-between px-4 items-center text-xs text-muted-foreground">
                 <span className="cursor-move font-bold ">⋮⋮</span>
                 <Badge variant="outline" className="px-2 py-0.5 text-xs">Task</Badge>

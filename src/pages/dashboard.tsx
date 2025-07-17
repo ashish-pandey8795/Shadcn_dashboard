@@ -81,7 +81,7 @@ export default function Page() {
           "--header-height": "calc(var(--spacing) * 12)",
         } as React.CSSProperties
       }
-      className=""
+      className="themed-title"
     >
       <AppSidebar activePage={activePage} setActivePage={setActivePage} />
 

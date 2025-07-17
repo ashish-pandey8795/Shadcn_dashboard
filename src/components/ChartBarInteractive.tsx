@@ -1,94 +1,14 @@
-// "use client"
 
-// import { TrendingUp } from "lucide-react"
-// import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
-
-// import {
-//   Card,
-//   CardContent,
-//   CardDescription,
-//   CardFooter,
-//   CardHeader,
-//   CardTitle,
-// } from "@/components/ui/card"
-// import {
-//   ChartConfig,
-//   ChartContainer,
-//   ChartTooltip,
-//   ChartTooltipContent,
-// } from "@/components/ui/chart"
-
-// export const description = "A multiple bar chart"
-
-// const chartData = [
-//   { month: "January", desktop: 186, mobile: 80 },
-//   { month: "February", desktop: 305, mobile: 200 },
-//   { month: "March", desktop: 237, mobile: 120 },
-//   { month: "April", desktop: 73, mobile: 190 },
-//   { month: "May", desktop: 209, mobile: 130 },
-//   { month: "June", desktop: 214, mobile: 140 },
-// ]
-
-// const chartConfig = {
-//   desktop: {
-//     label: "Desktop",
-//     color: "var(--chart-1)",
-//   },
-//   mobile: {
-//     label: "Mobile",
-//     color: "var(--chart-2)",
-//   },
-// } satisfies ChartConfig
-
-// export function ChartBarInteractive() {
-//   return (
-//     <Card>
-//       <CardHeader>
-//         <CardTitle>Bar Chart - Multiple</CardTitle>
-//         <CardDescription>January - June 2024</CardDescription>
-//       </CardHeader>
-//       <CardContent>
-//         <ChartContainer config={chartConfig} className="h-[235px] w-full">
-//           <BarChart accessibilityLayer data={chartData}>
-//             <CartesianGrid vertical={false} />
-//             <XAxis
-//               dataKey="month"
-//               tickLine={false}
-//               tickMargin={10}
-//               axisLine={false}
-//               tickFormatter={(value) => value.slice(0, 3)}
-//             />
-//             <ChartTooltip
-//               cursor={false}
-//               content={<ChartTooltipContent indicator="dashed" />}
-//             />
-//             <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-//             <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
-//           </BarChart>
-//         </ChartContainer>
-//       </CardContent>
-//       <CardFooter className="flex-col items-start gap-2 text-sm">
-//         <div className="flex gap-2 leading-none font-medium">
-//           Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-//         </div>
-//         <div className="text-muted-foreground leading-none">
-//           Showing total visitors for the last 6 months
-//         </div>
-//       </CardFooter>
-//     </Card>
-//   )
-// }
 
 // "use client";
 
-// import { TrendingUp } from "lucide-react";
+// import * as React from "react";
 // import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 
 // import {
 //   Card,
 //   CardContent,
 //   CardDescription,
-//   CardFooter,
 //   CardHeader,
 //   CardTitle,
 // } from "@/components/ui/card";
@@ -99,175 +19,127 @@
 //   ChartTooltipContent,
 // } from "@/components/ui/chart";
 
-// export const description = "A multiple bar chart";
+
+
 
 // const chartData = [
-//   { date: "01 Jan 2024", desktop: 120, mobile: 80, tablet: 40 },
-//   { date: "15 Jan 2024", desktop: 186, mobile: 95, tablet: 55 },
-//   { date: "01 Feb 2024", desktop: 200, mobile: 130, tablet: 70 },
-//   { date: "15 Feb 2024", desktop: 305, mobile: 200, tablet: 90 },
-//   { date: "01 Mar 2024", desktop: 190, mobile: 90, tablet: 60 },
-//   { date: "15 Mar 2024", desktop: 237, mobile: 120, tablet: 72 },
-//   { date: "01 Apr 2024", desktop: 73, mobile: 150, tablet: 45 },
-//   { date: "15 Apr 2024", desktop: 110, mobile: 190, tablet: 85 },
-//   { date: "01 May 2024", desktop: 180, mobile: 100, tablet: 55 },
-//   { date: "15 May 2024", desktop: 209, mobile: 130, tablet: 75 },
-//   { date: "01 Jun 2024", desktop: 165, mobile: 115, tablet: 62 },
-//   { date: "15 Jun 2024", desktop: 214, mobile: 140, tablet: 88 },
-//   { date: "01 Jul 2024", desktop: 195, mobile: 122, tablet: 65 },
-//   { date: "15 Jul 2024", desktop: 230, mobile: 160, tablet: 92 },
-//   { date: "01 Aug 2024", desktop: 175, mobile: 135, tablet: 58 },
-//   { date: "15 Aug 2024", desktop: 220, mobile: 170, tablet: 95 },
+//   { date: '2024-04-01', desktop: 222, mobile: 150 },
+//   { date: '2024-04-02', desktop: 97, mobile: 180 },
+//   { date: '2024-04-03', desktop: 167, mobile: 120 },
+//   { date: '2024-04-04', desktop: 242, mobile: 260 },
+//   { date: '2024-04-05', desktop: 373, mobile: 290 },
+//   { date: '2024-04-06', desktop: 301, mobile: 340 },
+//   { date: '2024-04-07', desktop: 245, mobile: 180 },
+//   { date: '2024-04-08', desktop: 409, mobile: 320 },
+//   { date: '2024-04-09', desktop: 59, mobile: 110 },
+//   { date: '2024-04-10', desktop: 261, mobile: 190 },
+//   { date: '2024-04-11', desktop: 327, mobile: 350 },
+//   { date: '2024-04-12', desktop: 292, mobile: 210 },
+//   { date: '2024-04-13', desktop: 342, mobile: 380 },
+//   { date: '2024-04-14', desktop: 137, mobile: 220 },
+//   { date: '2024-04-15', desktop: 120, mobile: 170 },
+//   { date: '2024-04-16', desktop: 138, mobile: 190 },
+//   { date: '2024-04-17', desktop: 446, mobile: 360 },
+//   { date: '2024-04-18', desktop: 364, mobile: 410 },
+//   { date: '2024-04-19', desktop: 243, mobile: 180 },
+//   { date: '2024-04-20', desktop: 89, mobile: 150 },
+//   { date: '2024-04-21', desktop: 137, mobile: 200 },
+//   { date: '2024-04-22', desktop: 224, mobile: 170 },
+//   { date: '2024-04-23', desktop: 138, mobile: 230 },
+//   { date: '2024-04-24', desktop: 387, mobile: 290 },
+//   { date: '2024-04-25', desktop: 215, mobile: 250 },
+//   { date: '2024-04-26', desktop: 75, mobile: 130 },
+//   { date: '2024-04-27', desktop: 383, mobile: 420 },
+//   { date: '2024-04-28', desktop: 122, mobile: 180 },
+//   { date: '2024-04-29', desktop: 315, mobile: 240 },
+//   { date: '2024-04-30', desktop: 454, mobile: 380 },
+//   { date: '2024-05-01', desktop: 165, mobile: 220 },
+//   { date: '2024-05-02', desktop: 293, mobile: 310 },
+//   { date: '2024-05-03', desktop: 247, mobile: 190 },
+//   { date: '2024-05-04', desktop: 385, mobile: 420 },
+//   { date: '2024-05-05', desktop: 481, mobile: 390 },
+//   { date: '2024-05-06', desktop: 498, mobile: 520 },
+//   { date: '2024-05-07', desktop: 388, mobile: 300 },
+//   { date: '2024-05-08', desktop: 149, mobile: 210 },
+//   { date: '2024-05-09', desktop: 227, mobile: 180 },
+//   { date: '2024-05-10', desktop: 293, mobile: 330 },
+//   { date: '2024-05-11', desktop: 335, mobile: 270 },
+//   { date: '2024-05-12', desktop: 197, mobile: 240 },
+//   { date: '2024-05-13', desktop: 197, mobile: 160 },
+//   { date: '2024-05-14', desktop: 448, mobile: 490 },
+//   { date: '2024-05-15', desktop: 473, mobile: 380 },
+//   { date: '2024-05-16', desktop: 338, mobile: 400 },
+//   { date: '2024-05-17', desktop: 499, mobile: 420 },
+//   { date: '2024-05-18', desktop: 315, mobile: 350 },
+//   { date: '2024-05-19', desktop: 235, mobile: 180 },
+//   { date: '2024-05-20', desktop: 177, mobile: 230 },
+//   { date: '2024-05-21', desktop: 82, mobile: 140 },
+//   { date: '2024-05-22', desktop: 81, mobile: 120 },
+//   { date: '2024-05-23', desktop: 252, mobile: 290 },
+//   { date: '2024-05-24', desktop: 294, mobile: 220 },
+//   { date: '2024-05-25', desktop: 201, mobile: 250 },
+//   { date: '2024-05-26', desktop: 213, mobile: 170 },
+//   { date: '2024-05-27', desktop: 420, mobile: 460 },
+//   { date: '2024-05-28', desktop: 233, mobile: 190 },
+//   { date: '2024-05-29', desktop: 78, mobile: 130 },
+//   { date: '2024-05-30', desktop: 340, mobile: 280 },
+//   { date: '2024-05-31', desktop: 178, mobile: 230 },
+//   { date: '2024-06-01', desktop: 178, mobile: 200 },
+//   { date: '2024-06-02', desktop: 470, mobile: 410 },
+//   { date: '2024-06-03', desktop: 103, mobile: 160 },
+//   { date: '2024-06-04', desktop: 439, mobile: 380 },
+//   { date: '2024-06-05', desktop: 88, mobile: 140 },
+//   { date: '2024-06-06', desktop: 294, mobile: 250 },
+//   { date: '2024-06-07', desktop: 323, mobile: 370 },
+//   { date: '2024-06-08', desktop: 385, mobile: 320 },
+//   { date: '2024-06-09', desktop: 438, mobile: 480 },
+//   { date: '2024-06-10', desktop: 155, mobile: 200 },
+//   { date: '2024-06-11', desktop: 92, mobile: 150 },
+//   { date: '2024-06-12', desktop: 492, mobile: 420 },
+//   { date: '2024-06-13', desktop: 81, mobile: 130 },
+//   { date: '2024-06-14', desktop: 426, mobile: 380 },
+//   { date: '2024-06-15', desktop: 307, mobile: 350 },
+//   { date: '2024-06-16', desktop: 371, mobile: 310 },
+//   { date: '2024-06-17', desktop: 475, mobile: 520 },
+//   { date: '2024-06-18', desktop: 107, mobile: 170 },
+//   { date: '2024-06-19', desktop: 341, mobile: 290 },
+//   { date: '2024-06-20', desktop: 408, mobile: 450 },
+//   { date: '2024-06-21', desktop: 169, mobile: 210 },
+//   { date: '2024-06-22', desktop: 317, mobile: 270 },
+//   { date: '2024-06-23', desktop: 480, mobile: 530 },
+//   { date: '2024-06-24', desktop: 132, mobile: 180 },
+//   { date: '2024-06-25', desktop: 141, mobile: 190 },
+//   { date: '2024-06-26', desktop: 434, mobile: 380 },
+//   { date: '2024-06-27', desktop: 448, mobile: 490 },
+//   { date: '2024-06-28', desktop: 149, mobile: 200 },
+//   { date: '2024-06-29', desktop: 103, mobile: 160 },
+//   { date: '2024-06-30', desktop: 446, mobile: 400 }
 // ];
 
 // const chartConfig = {
 //   desktop: {
 //     label: "Desktop",
-//     color: "var(--chart-1)",
+//     color: "url(#gradient-desktop)",
 //   },
 //   mobile: {
 //     label: "Mobile",
-//     color: "var(--chart-2)",
+//     color: "url(#gradient-mobile)",
 //   },
 // } satisfies ChartConfig;
 
 // export function ChartBarInteractive() {
-//   return (
-//     <Card>
-//       <CardHeader>
-//         <CardTitle>Bar Chart - Multiple</CardTitle>
-//         <CardDescription>January - June 2024</CardDescription>
-//       </CardHeader>
-//       <CardContent>
-//         <ChartContainer config={chartConfig} className="h-[235px] w-full">
-//           <BarChart accessibilityLayer data={chartData}>
-// <defs>
-//   <linearGradient id="gradient-desktop" x1="0" y1="0" x2="0" y2="1">
-//     <stop offset="0%" stopColor="var(--chart-1)" stopOpacity="1" />
-//     <stop
-//       offset="100%"
-//       stopColor="var(--chart-1)"
-//       stopOpacity="0.1"
-//     />
-//   </linearGradient>
-//   <linearGradient id="gradient-mobile" x1="0" y1="0" x2="0" y2="1">
-//     <stop offset="0%" stopColor="var(--chart-1)" stopOpacity="1" />
-//     <stop
-//       offset="100%"
-//       stopColor="var(--chart-1)"
-//       stopOpacity="0.1"
-//     />
-//   </linearGradient>
-//   <linearGradient id="gradient-tablet" x1="0" y1="0" x2="0" y2="1">
-//     <stop offset="0%" stopColor="var(--chart-1)" stopOpacity="1" />
-//     <stop
-//       offset="100%"
-//       stopColor="var(--chart-1)"
-//       stopOpacity="0.1"
-//     />
-//   </linearGradient>
-// </defs>
-
-//             <CartesianGrid
-//               strokeDasharray="3 3"
-//               vertical={false}
-//               horizontal={true}
-//             />
-//             <XAxis
-//               dataKey="date"
-//               tickLine={false}
-//               tickMargin={10}
-//               axisLine={false}
-//               tickFormatter={(value) => value.slice(0, 6)}
-//             />
-//             <ChartTooltip
-//               cursor={false}
-//               content={<ChartTooltipContent indicator="dashed" />}
-//             />
-//             <Bar dataKey="desktop" fill="url(#gradient-desktop)" radius={4} />
-//             <Bar dataKey="mobile" fill="url(#gradient-mobile)" radius={4} />
-//             <Bar dataKey="tablet" fill="url(#gradient-tablet)" radius={4} />
-//           </BarChart>
-//         </ChartContainer>
-//       </CardContent>
-//       <CardFooter className="flex-col items-start gap-2 text-sm">
-//         <div className="flex gap-2 leading-none font-medium">
-//           Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-//         </div>
-//         <div className="text-muted-foreground leading-none">
-//           Showing total visitors for the last 6 months
-//         </div>
-//       </CardFooter>
-//     </Card>
-//   );
-// }
-
-// "use client"
-
-// import * as React from "react"
-// // import { TrendingUp } from "lucide-react"
-// import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
-
-// import {
-//   Card,
-//   CardContent,
-//   CardDescription,
-//   // CardFooter,
-//   CardHeader,
-//   CardTitle,
-// } from "@/components/ui/card"
-// import {
-//   ChartConfig,
-//   ChartContainer,
-//   ChartTooltip,
-//   ChartTooltipContent,
-// } from "@/components/ui/chart"
-
-// export const description = "A multiple bar chart"
-
-// const chartData = [
-//   { date: "01 Jan 2024", desktop: 120, mobile: 80 },
-//   { date: "15 Jan 2024", desktop: 186, mobile: 95 },
-//   { date: "01 Feb 2024", desktop: 200, mobile: 130},
-//   { date: "15 Feb 2024", desktop: 305, mobile: 200 },
-//   { date: "01 Mar 2024", desktop: 190, mobile: 90 },
-//   { date: "15 Mar 2024", desktop: 237, mobile: 120},
-//   { date: "01 Apr 2024", desktop: 73, mobile: 150},
-//   { date: "15 Apr 2024", desktop: 110, mobile: 190 },
-//   { date: "01 May 2024", desktop: 180, mobile: 100 },
-//   { date: "15 May 2024", desktop: 209, mobile: 130 },
-//   { date: "01 Jun 2024", desktop: 165, mobile: 115 },
-//   { date: "15 Jun 2024", desktop: 214, mobile: 140},
-//   { date: "01 Jul 2024", desktop: 195, mobile: 122 },
-//   { date: "15 Jul 2024", desktop: 230, mobile: 160},
-//   { date: "01 Aug 2024", desktop: 175, mobile: 135 },
-//   { date: "15 Aug 2024", desktop: 220, mobile: 170 },
-// ]
-
-// const chartConfig = {
-//   desktop: {
-//     label: "Desktop",
-//     color: "var(--chart-1)",
-//   },
-//   mobile: {
-//     label: "Mobile",
-//     color: "var(--chart-1)",
-//   },
-// } satisfies ChartConfig
-
-// export function ChartBarInteractive() {
 //   const [activeChart, setActiveChart] =
-//     React.useState<keyof typeof chartConfig>("desktop")
+//     React.useState<keyof typeof chartConfig>("desktop");
 
 //   const total = React.useMemo(() => {
 //     return {
 //       desktop: chartData.reduce((acc, curr) => acc + curr.desktop, 0),
 //       mobile: chartData.reduce((acc, curr) => acc + curr.mobile, 0),
-//     }
-//   }, [])
+//     };
+//   }, []);
 
 //   return (
-//     <Card>
+//     <Card className="px-0 py-0">
 //       <CardHeader className="flex flex-col sm:flex-row items-stretch border-b !p-0">
 //         <div className="flex-1 px-6 pt-4 pb-3 sm:py-6">
 //           <CardTitle>Bar Chart - Multiple</CardTitle>
@@ -289,12 +161,35 @@
 //               </div>
 //             </button>
 //           ))}
+//           <button className="data-[active=true]:bg-muted/50 flex-1 px-6 py-4 text-left text-sm even:border-l border-t sm:border-t-0 sm:border-l sm:px-8 sm:py-6">
+//             <div className="text-muted-foreground text-xs">error</div>
+//           </button>
 //         </div>
 //       </CardHeader>
 
 //       <CardContent>
-//         <ChartContainer config={chartConfig} className="h-[235px] w-full">
+//         <ChartContainer config={chartConfig} className="h-[285px] w-full">
 //           <BarChart data={chartData}>
+//             {/* Gradient Definitions */}
+//             <defs>
+//               <linearGradient id="gradient-desktop" x1="0" y1="0" x2="0" y2="1">
+//                 <stop offset="0%" stopColor="var(--chart-1)" stopOpacity="1" />
+//                 <stop
+//                   offset="100%"
+//                   stopColor="var(--chart-1)"
+//                   stopOpacity="0.1"
+//                 />
+//               </linearGradient>
+//               <linearGradient id="gradient-mobile" x1="0" y1="0" x2="0" y2="1">
+//                 <stop offset="0%" stopColor="var(--chart-1)" stopOpacity="1" />
+//                 <stop
+//                   offset="100%"
+//                   stopColor="var(--chart-1)"
+//                   stopOpacity="0.1"
+//                 />
+//               </linearGradient>
+//             </defs>
+
 //             <CartesianGrid strokeDasharray="3 3" vertical={false} />
 //             <XAxis
 //               dataKey="date"
@@ -316,10 +211,15 @@
 //           </BarChart>
 //         </ChartContainer>
 //       </CardContent>
-
 //     </Card>
-//   )
+//   );
 // }
+
+
+
+
+
+
 
 "use client";
 
@@ -341,45 +241,97 @@ import {
 } from "@/components/ui/chart";
 
 const chartData = [
-  { date: "01 Jan 2024", desktop: 250, mobile: 80 },
-  { date: "15 Jan 2024", desktop: 126, mobile: 95 },
-  { date: "20 Jan 2024", desktop: 80, mobile: 100 },
-  { date: "30 Jan 2024", desktop: 200, mobile: 100 },
-
-  { date: "01 Feb 2024", desktop: 300, mobile: 130 },
-  { date: "15 Feb 2024", desktop: 250, mobile: 200 },
-  { date: "22 Feb 2024", desktop: 160, mobile: 110 },
-  { date: "28 Feb 2024", desktop: 160, mobile: 110 },
-
-  { date: "01 Mar 2024", desktop: 190, mobile: 90 },
-  { date: "15 Mar 2024", desktop: 237, mobile: 120 },
-  { date: "20 Mar 2024", desktop: 210, mobile: 105 },
-  { date: "30 Mar 2024", desktop: 210, mobile: 105 },
-
-  { date: "01 Apr 2024", desktop: 73, mobile: 150 },
-  { date: "15 Apr 2024", desktop: 110, mobile: 190 },
-  { date: "20 Apr 2024", desktop: 140, mobile: 170 },
-  { date: "30 Apr 2024", desktop: 140, mobile: 170 },
-
-  { date: "01 May 2024", desktop: 180, mobile: 100 },
-  { date: "15 May 2024", desktop: 209, mobile: 130 },
-  { date: "20 May 2024", desktop: 190, mobile: 115 },
-  { date: "30 May 2024", desktop: 190, mobile: 115 },
-
-  { date: "01 Jun 2024", desktop: 165, mobile: 115 },
-  { date: "15 Jun 2024", desktop: 214, mobile: 140 },
-  { date: "20 Jun 2024", desktop: 170, mobile: 105 },
-  { date: "30 Jun 2024", desktop: 170, mobile: 105 },
-
-  { date: "01 Jul 2024", desktop: 195, mobile: 122 },
-  { date: "15 Jul 2024", desktop: 230, mobile: 160 },
-  { date: "20 Jul 2024", desktop: 210, mobile: 145 },
-  { date: "30 Jul 2024", desktop: 210, mobile: 145 },
-
-  { date: "01 Aug 2024", desktop: 175, mobile: 135 },
-  { date: "15 Aug 2024", desktop: 220, mobile: 170 },
-  { date: "20 Aug 2024", desktop: 200, mobile: 150 },
-  { date: "30 Aug 2024", desktop: 200, mobile: 150 },
+  { date: '2024-04-01', desktop: 222, mobile: 150 },
+  { date: '2024-04-02', desktop: 97, mobile: 180 },
+  { date: '2024-04-03', desktop: 167, mobile: 120 },
+  { date: '2024-04-04', desktop: 242, mobile: 260 },
+  { date: '2024-04-05', desktop: 373, mobile: 290 },
+  { date: '2024-04-06', desktop: 301, mobile: 340 },
+  { date: '2024-04-07', desktop: 245, mobile: 180 },
+  { date: '2024-04-08', desktop: 409, mobile: 320 },
+  { date: '2024-04-09', desktop: 59, mobile: 110 },
+  { date: '2024-04-10', desktop: 261, mobile: 190 },
+  { date: '2024-04-11', desktop: 327, mobile: 350 },
+  { date: '2024-04-12', desktop: 292, mobile: 210 },
+  { date: '2024-04-13', desktop: 342, mobile: 380 },
+  { date: '2024-04-14', desktop: 137, mobile: 220 },
+  { date: '2024-04-15', desktop: 120, mobile: 170 },
+  { date: '2024-04-16', desktop: 138, mobile: 190 },
+  { date: '2024-04-17', desktop: 446, mobile: 360 },
+  { date: '2024-04-18', desktop: 364, mobile: 410 },
+  { date: '2024-04-19', desktop: 243, mobile: 180 },
+  { date: '2024-04-20', desktop: 89, mobile: 150 },
+  { date: '2024-04-21', desktop: 137, mobile: 200 },
+  { date: '2024-04-22', desktop: 224, mobile: 170 },
+  { date: '2024-04-23', desktop: 138, mobile: 230 },
+  { date: '2024-04-24', desktop: 387, mobile: 290 },
+  { date: '2024-04-25', desktop: 215, mobile: 250 },
+  { date: '2024-04-26', desktop: 75, mobile: 130 },
+  { date: '2024-04-27', desktop: 383, mobile: 420 },
+  { date: '2024-04-28', desktop: 122, mobile: 180 },
+  { date: '2024-04-29', desktop: 315, mobile: 240 },
+  { date: '2024-04-30', desktop: 454, mobile: 380 },
+  { date: '2024-05-01', desktop: 165, mobile: 220 },
+  { date: '2024-05-02', desktop: 293, mobile: 310 },
+  { date: '2024-05-03', desktop: 247, mobile: 190 },
+  { date: '2024-05-04', desktop: 385, mobile: 420 },
+  { date: '2024-05-05', desktop: 481, mobile: 390 },
+  { date: '2024-05-06', desktop: 498, mobile: 520 },
+  { date: '2024-05-07', desktop: 388, mobile: 300 },
+  { date: '2024-05-08', desktop: 149, mobile: 210 },
+  { date: '2024-05-09', desktop: 227, mobile: 180 },
+  { date: '2024-05-10', desktop: 293, mobile: 330 },
+  { date: '2024-05-11', desktop: 335, mobile: 270 },
+  { date: '2024-05-12', desktop: 197, mobile: 240 },
+  { date: '2024-05-13', desktop: 197, mobile: 160 },
+  { date: '2024-05-14', desktop: 448, mobile: 490 },
+  { date: '2024-05-15', desktop: 473, mobile: 380 },
+  { date: '2024-05-16', desktop: 338, mobile: 400 },
+  { date: '2024-05-17', desktop: 499, mobile: 420 },
+  { date: '2024-05-18', desktop: 315, mobile: 350 },
+  { date: '2024-05-19', desktop: 235, mobile: 180 },
+  { date: '2024-05-20', desktop: 177, mobile: 230 },
+  { date: '2024-05-21', desktop: 82, mobile: 140 },
+  { date: '2024-05-22', desktop: 81, mobile: 120 },
+  { date: '2024-05-23', desktop: 252, mobile: 290 },
+  { date: '2024-05-24', desktop: 294, mobile: 220 },
+  { date: '2024-05-25', desktop: 201, mobile: 250 },
+  { date: '2024-05-26', desktop: 213, mobile: 170 },
+  { date: '2024-05-27', desktop: 420, mobile: 460 },
+  { date: '2024-05-28', desktop: 233, mobile: 190 },
+  { date: '2024-05-29', desktop: 78, mobile: 130 },
+  { date: '2024-05-30', desktop: 340, mobile: 280 },
+  { date: '2024-05-31', desktop: 178, mobile: 230 },
+  { date: '2024-06-01', desktop: 178, mobile: 200 },
+  { date: '2024-06-02', desktop: 470, mobile: 410 },
+  { date: '2024-06-03', desktop: 103, mobile: 160 },
+  { date: '2024-06-04', desktop: 439, mobile: 380 },
+  { date: '2024-06-05', desktop: 88, mobile: 140 },
+  { date: '2024-06-06', desktop: 294, mobile: 250 },
+  { date: '2024-06-07', desktop: 323, mobile: 370 },
+  { date: '2024-06-08', desktop: 385, mobile: 320 },
+  { date: '2024-06-09', desktop: 438, mobile: 480 },
+  { date: '2024-06-10', desktop: 155, mobile: 200 },
+  { date: '2024-06-11', desktop: 92, mobile: 150 },
+  { date: '2024-06-12', desktop: 492, mobile: 420 },
+  { date: '2024-06-13', desktop: 81, mobile: 130 },
+  { date: '2024-06-14', desktop: 426, mobile: 380 },
+  { date: '2024-06-15', desktop: 307, mobile: 350 },
+  { date: '2024-06-16', desktop: 371, mobile: 310 },
+  { date: '2024-06-17', desktop: 475, mobile: 520 },
+  { date: '2024-06-18', desktop: 107, mobile: 170 },
+  { date: '2024-06-19', desktop: 341, mobile: 290 },
+  { date: '2024-06-20', desktop: 408, mobile: 450 },
+  { date: '2024-06-21', desktop: 169, mobile: 210 },
+  { date: '2024-06-22', desktop: 317, mobile: 270 },
+  { date: '2024-06-23', desktop: 480, mobile: 530 },
+  { date: '2024-06-24', desktop: 132, mobile: 180 },
+  { date: '2024-06-25', desktop: 141, mobile: 190 },
+  { date: '2024-06-26', desktop: 434, mobile: 380 },
+  { date: '2024-06-27', desktop: 448, mobile: 490 },
+  { date: '2024-06-28', desktop: 149, mobile: 200 },
+  { date: '2024-06-29', desktop: 103, mobile: 160 },
+  { date: '2024-06-30', desktop: 446, mobile: 400 },
 ];
 
 const chartConfig = {
@@ -408,8 +360,8 @@ export function ChartBarInteractive() {
     <Card className="px-0 py-0">
       <CardHeader className="flex flex-col sm:flex-row items-stretch border-b !p-0">
         <div className="flex-1 px-6 pt-4 pb-3 sm:py-6">
-          <CardTitle>Bar Chart - Multiple</CardTitle>
-          <CardDescription>January - August 2024</CardDescription>
+          <CardTitle>Bar Chart - Interactive</CardTitle>
+          <CardDescription>Total for the last 3 months</CardDescription>
         </div>
         <div className="flex">
           {(["desktop", "mobile"] as const).map((key) => (
@@ -428,7 +380,7 @@ export function ChartBarInteractive() {
             </button>
           ))}
           <button className="data-[active=true]:bg-muted/50 flex-1 px-6 py-4 text-left text-sm even:border-l border-t sm:border-t-0 sm:border-l sm:px-8 sm:py-6">
-            <div className="text-muted-foreground text-xs">error</div>
+            <div className="text-muted-foreground text-xs">Error</div>
           </button>
         </div>
       </CardHeader>
@@ -436,34 +388,31 @@ export function ChartBarInteractive() {
       <CardContent>
         <ChartContainer config={chartConfig} className="h-[285px] w-full">
           <BarChart data={chartData}>
-            {/* Gradient Definitions */}
             <defs>
               <linearGradient id="gradient-desktop" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="var(--chart-1)" stopOpacity="1" />
-                <stop
-                  offset="100%"
-                  stopColor="var(--chart-1)"
-                  stopOpacity="0.1"
-                />
+                <stop offset="100%" stopColor="var(--chart-1)" stopOpacity="0.1" />
               </linearGradient>
               <linearGradient id="gradient-mobile" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="var(--chart-1)" stopOpacity="1" />
-                <stop
-                  offset="100%"
-                  stopColor="var(--chart-1)"
-                  stopOpacity="0.1"
-                />
+                <stop offset="100%" stopColor="var(--chart-1)" stopOpacity="0.1" />
               </linearGradient>
             </defs>
 
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
-            <XAxis
-              dataKey="date"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={10}
-              tickFormatter={(value) => value.slice(0, 6)}
-            />
+      <XAxis
+  dataKey="date"
+  tickLine={false}
+  axisLine={false}
+  tickMargin={10}
+  tickFormatter={(value) =>
+    new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "2-digit",
+    }).format(new Date(value))
+  }
+/>
+
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent indicator="dashed" />}
@@ -480,3 +429,12 @@ export function ChartBarInteractive() {
     </Card>
   );
 }
+
+
+
+
+
+
+
+
+

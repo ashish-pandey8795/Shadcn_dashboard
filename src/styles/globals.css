@@ -422,8 +422,12 @@ body {
   --primary: oklch(0.6 0 0);
   --primary-foreground: oklch(0.95 0 0);
   --chart-1: var(--color-neutral-600);
+  
 }
 
+[data-theme='mono-scaled'] .themed-title {
+ font-family: "Geist Mono", "Geist Mono Fallback", monospace;
+}
 
 [data-theme='default-scaled'] {
   --primary: oklch(0.5 0.1 240);
