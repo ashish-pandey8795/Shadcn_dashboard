@@ -1,8 +1,8 @@
-import { MoreHorizontal } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Badge } from "@/components/ui/badge"
+import { MoreHorizontal } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Badge } from "@/components/ui/badge";
 
 export default function Kanban() {
   return (
@@ -22,8 +22,6 @@ export default function Kanban() {
         </Button>
       </div>
 
-      
-
       {/* Kanban Board */}
       <div className="flex gap-6 overflow-x-auto pb-4">
         {/* Column */}
@@ -32,7 +30,9 @@ export default function Kanban() {
           <div className="flex items-center justify-between px-8 py-6 border-b">
             <div className="flex items-center gap-6 w-[80%]">
               <span className="text-sm text-blue-600 font-bold">⋮⋮</span>
-              <span className="text-sm font-medium shadow w-full px-2 py-2">Todo</span>
+              <span className="text-sm font-medium shadow w-full px-2 py-2">
+                Todo
+              </span>
             </div>
             <Button variant="ghost" size="icon" className="  shadow  px-2 py-2">
               <MoreHorizontal className="h-4 w-4" />
@@ -41,41 +41,57 @@ export default function Kanban() {
 
           {/* Tasks */}
           <ScrollArea className="h-[460px] px-2 py-3">
+<<<<<<< HEAD
             <Card className="mb-4  py-7 rounded-lg border shadow-sm bg-white text-black dark:bg-black dark:text-white">
               <div className="flex justify-between px-4 items-center text-xs text-muted-foreground">
                 <span className="cursor-move font-bold ">⋮⋮</span>
                 <Badge variant="outline" className="px-2 py-0.5 text-xs bg-white text-black dark:bg-black dark:text-white">Task</Badge>
+=======
+            <Card className="mb-4 py-7 rounded-lg border shadow-sm bg-background text-foreground">
+              <div className="flex justify-between px-4 items-center text-xs text-muted-foreground">
+                <span className="cursor-move font-bold">⋮⋮</span>
+                <Badge variant="outline" className="px-2 py-0.5 text-xs">
+                  Task
+                </Badge>
+>>>>>>> d892d7020737c569e08ad215a87f9c4fd9af5bda
               </div>
-              <hr/>
-              <div className="mt-3 px-3 text-sm font-medium text-black">
+              <hr className="border-border mt-2" />
+              <div className="mt-3 px-3 text-sm font-medium text-foreground">
                 Project initiation and planning
               </div>
             </Card>
 
+<<<<<<< HEAD
                    <Card className="mb-4  py-7 rounded-lg border shadow-sm bg-white text-black dark:bg-black dark:text-white">
               <div className="flex justify-between px-4 items-center text-xs text-muted-foreground">
                 <span className="cursor-move font-bold ">⋮⋮</span>
                 <Badge variant="outline" className="bg-white text-black dark:bg-black dark:text-white px-2 py-0.5 text-xs">Task</Badge>
+=======
+            <Card className="mb-4 py-7 rounded-lg border shadow-sm bg-background text-foreground">
+              <div className="flex justify-between px-4 items-center text-xs text-muted-foreground">
+                <span className="cursor-move font-bold">⋮⋮</span>
+                <Badge variant="outline" className="px-2 py-0.5 text-xs">
+                  Task
+                </Badge>
+>>>>>>> d892d7020737c569e08ad215a87f9c4fd9af5bda
               </div>
-              <hr/>
-              <div className="mt-3 px-3 text-sm font-medium text-black">
-                  Gather requirements from stakeholders
+              <hr className="border-border mt-2" />
+              <div className="mt-3 px-3 text-sm font-medium text-foreground">
+                Gather requirements from stakeholders
               </div>
             </Card>
-
-          
           </ScrollArea>
         </div>
 
-          <div className="flex justify-end mb-3">
-        <Button
-          variant="ghost"
-          className="bg-muted hover:bg-muted border px-20 py-2 rounded-md text-sm font-medium shadow-sm"
-        >
-          + Add New Section
-        </Button>
-      </div>
+        <div className="flex justify-end mb-3">
+          <Button
+            variant="ghost"
+            className="bg-muted hover:bg-muted border px-20 py-2 rounded-md text-sm font-medium shadow-sm"
+          >
+            + Add New Section
+          </Button>
+        </div>
       </div>
     </div>
-  )
+  );
 }
