@@ -1,6 +1,6 @@
 // components/theme-selector.tsx
 'use client';
-
+import { useEffect } from 'react';
 import { useThemeConfig } from '@/components/active-theme';
 import { Label } from '@/components/ui/label';
 import {
@@ -32,6 +32,11 @@ const MONO_THEMES = [
 
 export function ThemeSelector() {
   const { activeTheme, setActiveTheme } = useThemeConfig();
+
+  useEffect(() => {
+    // Clear any persisted theme or just ensure it's undefined
+    setActiveTheme("default");
+  }, []);
 
   return (
     <div className='flex items-center gap-2'>

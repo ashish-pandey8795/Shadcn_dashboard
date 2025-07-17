@@ -20,15 +20,15 @@ const items = [
     group: 'Navigation',
     links: [
       { label: 'Dashboard', sub: 'Go to Dashboard', key: 'd', href: '/dashboard' },
-      { label: 'Product', sub: 'Go to Product', key: 'p', href: '/product' },
-      { label: 'Kanban', sub: 'Go to Kanban', key: 'k', href: '/kanban' },
+      { label: 'Product', sub: 'Go to Product', key: 'p', href: '/dashboard' },
+      { label: 'Kanban', sub: 'Go to Kanban', key: 'k', href: '/dashboard' },
     ],
   },
   {
     group: 'Account',
     links: [
-      { label: 'Profile', sub: 'Go to Profile', key: 'm', href: '/profile' },
-      { label: 'Login', sub: 'Go to Login', key: 'l', href: '/login' },
+      { label: 'Profile', sub: 'Go to Profile', key: 'm', href: '/dashboard' },
+      { label: 'Login', sub: 'Go to Login', key: 'l', href: '/dashboard' },
     ],
   },
 ];
