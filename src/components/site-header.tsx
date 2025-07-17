@@ -17,8 +17,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 export function SiteHeader() {
   return (
-    <header className="flex h-[var(--header-height)] shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-[.has-data-[collapsible=icon]]/sidebar-wrapper:h-[var(--header-height)] ">
-      <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
+    <header className="flex h-[var(--header-height)]  bg-background sticky top-0 py-6  z-50 w-full  shrink-0 items-center gap-2  transition-[width,height] ease-linear group-[.has-data-[collapsible=icon]]/sidebar-wrapper:h-[var(--header-height)] " >
+      <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6 ">
         <SidebarTrigger className="-ml-1" />
         <Separator
           orientation="vertical"
@@ -45,7 +45,7 @@ export function SiteHeader() {
               target="_blank"
               className="dark:text-foreground"
             >
-             {/* <FaGithub /> */}GitHub
+            GitHub
             </a>
           </Button>
           <SearchInput/>
