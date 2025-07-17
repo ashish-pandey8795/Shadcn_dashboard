@@ -5,7 +5,7 @@ import { ActiveThemeProvider } from '@/components/active-theme';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ActiveThemeProvider>
+    <ActiveThemeProvider >
       <Component {...pageProps} />
     </ActiveThemeProvider>
   );

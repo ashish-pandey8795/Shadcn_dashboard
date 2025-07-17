@@ -78,7 +78,7 @@ const data = {
         },
         {
           title: "Login",
-          url: "#",
+          url: "/auth/login",
           
         },
       

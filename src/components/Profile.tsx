@@ -9,7 +9,7 @@ export default function Profile() {
   const [activeTab, setActiveTab] = useState("profile");
 
   return (
-    <div className="flex min-h-[85vh] mt-2 bg-background text-sm rounded-xl border md:max-w-[80%] ">
+    <div className="bg-white text-black dark:bg-black dark:text-white flex min-h-[85vh] mt-2 bg-background text-sm rounded-xl border md:max-w-[80%] ">
       {/* Sidebar */}
       <aside className="w-72  bg-muted/40 p-6 flex flex-col justify-between rounded-l-xl">
         <div>
@@ -36,9 +36,9 @@ export default function Profile() {
       </aside>
 
       {/* Main content */}
-      <main className="flex-1  min-h-[85vh] rounded-xl border">
+      <main className="bg-white text-black dark:bg-black dark:text-white flex-1  min-h-[85vh] rounded-xl border">
         {activeTab === "profile" && (
-          <div className="max-w-4xl w-full mx-auto bg-background  p-6">
+          <div className="max-w-4xl w-full mx-auto p-6">
             <h2 className="text-xl font-semibold mb-6">Profile details</h2>
             <div className="space-y-6">
               <div className="flex justify-between items-center">
@@ -51,7 +51,7 @@ export default function Profile() {
                     <p className="font-medium text-base">ashish pandey</p>
                   </div>
                 </div>
-                <Button variant="outline" size="sm">
+                <Button variant="outline" size="sm" className="bg-white text-black dark:bg-black dark:text-white">
                   Update profile
                 </Button>
               </div>
@@ -67,7 +67,7 @@ export default function Profile() {
                   </div>
                   <Button variant="ghost" size="sm">...</Button>
                 </div>
-                <Button variant="link" size="sm" className="pl-0 mt-2">
+                <Button variant="link" size="sm" className="pl-0 mt-2 bg-white text-black dark:bg-black dark:text-white">
                   + Add email address
                 </Button>
               </div>
@@ -95,7 +95,7 @@ export default function Profile() {
                   </div>
                   <Button variant="ghost" size="sm">...</Button>
                 </div>
-                <Button variant="link" size="sm" className="pl-0 mt-2">
+                <Button variant="link" size="sm" className="pl-0 mt-2 bg-white text-black dark:bg-black dark:text-white">
                   + Connect account
                 </Button>
               </div>
@@ -104,12 +104,12 @@ export default function Profile() {
         )}
 
         {activeTab === "security" && (
-          <div className="max-w-4xl w-full mx-auto bg-background  p-6">
+          <div className="bg-white text-black dark:bg-black dark:text-white max-w-4xl w-full mx-auto bg-background  p-6">
             <h2 className="text-xl font-semibold mb-6">Security</h2>
             <div className="space-y-6">
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center ">
                 <p className="text-sm">Password</p>
-                <Button variant="link" size="sm">Set password</Button>
+                <Button variant="link" size="sm" className="bg-white text-black dark:bg-black dark:text-white">Set password</Button>
               </div>
 
               <Separator />
@@ -117,7 +117,7 @@ export default function Profile() {
               <div>
                 <p className="text-muted-foreground mb-2 font-medium">Active devices</p>
                 <div className="flex items-start gap-4">
-                  <div className="bg-black w-8 h-8 rounded" />
+                  <div className="bg-black dark:bg-white w-8 h-8 rounded" />
                   <div className="space-y-1 text-sm">
                     <div className="flex items-center gap-2">
                       <span>Macintosh</span>

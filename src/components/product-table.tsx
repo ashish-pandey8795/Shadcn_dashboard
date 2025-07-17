@@ -74,7 +74,7 @@ const products = [
 
 export function ProductTable() {
   return (
-    <div className="p-6 space-y-4">
+    <div className="bg-white text-black dark:bg-black dark:text-white p-6 space-y-4">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -92,11 +92,11 @@ export function ProductTable() {
       {/* Search + Filters */}
       <div className="flex gap-2">
         <Input placeholder="Search products…" className="max-w-sm" />
-        <Button variant="outline" className="flex items-center gap-2">
+        <Button variant="outline" className=" bg-white text-black dark:bg-black dark:text-white flex items-center gap-2">
           <Filter className="w-4 h-4" />
           Categories
         </Button>
-        <Button variant="outline" className="ml-auto">
+        <Button variant="outline" className="ml-auto bg-white text-black dark:bg-black dark:text-white">
           <SlidersHorizontal className="w-4 h-4" />
           View
         </Button>
@@ -105,8 +105,8 @@ export function ProductTable() {
       {/* Table */}
       <div className="rounded-md border border-gray-200 dark:border-gray-700">
         <Table>
-          <TableHeader>
-            <TableRow>
+          <TableHeader >
+            <TableRow className='bg-white text-black dark:bg-black dark:text-white'>
               <TableHead>Image</TableHead>
               <TableHead>Name</TableHead>
               <TableHead>Category</TableHead>
@@ -157,7 +157,7 @@ export function ProductTable() {
         <div>10 row(s) total.</div>
         <div className="flex items-center space-x-2">
           <span>Rows per page</span>
-          <select className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 rounded px-2 py-1 text-sm text-foreground dark:text-white">
+          <select className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-black dark:text-white rounded px-2 py-1 text-sm ">
             <option>10</option>
             <option>20</option>
           </select>

@@ -86,8 +86,10 @@ export default function Page() {
       <AppSidebar activePage={activePage} setActivePage={setActivePage} />
 
       <SidebarInset>
+        <div className="bg-white text-black dark:bg-black dark:text-white pt-4 sticky top-0 z-50">
         <SiteHeader />
-        <div className="flex flex-1 flex-col ">
+        </div>
+        <div className="bg-white text-black dark:bg-black dark:text-white flex flex-1 flex-col ">
           <div className="@container/main flex flex-1 flex-col gap-2">
            {activePage === "Dashboard" || activePage === "Login"?(
               <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">

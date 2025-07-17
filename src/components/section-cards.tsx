@@ -20,7 +20,7 @@ export function SectionCards() {
             $1,250.00
           </CardTitle>
           <CardAction>
-            <Badge variant="outline">
+            <Badge variant="outline" className="text-black dark:text-white">
               <IconTrendingUp />
               +12.5%
             </Badge>
@@ -42,7 +42,7 @@ export function SectionCards() {
             1,234
           </CardTitle>
           <CardAction>
-            <Badge variant="outline">
+            <Badge variant="outline" className="text-black dark:text-white">
               <IconTrendingDown />
               -20%
             </Badge>
@@ -64,7 +64,7 @@ export function SectionCards() {
             45,678
           </CardTitle>
           <CardAction>
-            <Badge variant="outline">
+            <Badge variant="outline" className="text-black dark:text-white">
               <IconTrendingUp />
               +12.5%
             </Badge>
@@ -84,7 +84,7 @@ export function SectionCards() {
             4.5%
           </CardTitle>
           <CardAction>
-            <Badge variant="outline">
+            <Badge variant="outline" className="text-black dark:text-white">
               <IconTrendingUp />
               +4.5%
             </Badge>
