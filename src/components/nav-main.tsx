@@ -41,7 +41,7 @@ export function NavMain({
   const [activeAccountSub, setActiveAccountSub] = useState<string | null>(null);
 
   const handleMainClick = (title: string) => {
-    if (["Dashboard", "Product", "Kunban"].includes(title)) {
+    if (["Dashboard", "Kunban","People"].includes(title)) {
       setActivePage(title);
       setActiveAccountSub(null);
     }
@@ -69,7 +69,7 @@ export function NavMain({
                   tooltip={item.title}
                   onClick={() => handleMainClick(item.title)}
                   className={
-                    ["Dashboard", "Product", "Kunban"].includes(item.title) &&
+                    ["Dashboard", "Kunban","People"].includes(item.title) &&
                     activePage === item.title
                       ? "bg-muted"
                       : ""

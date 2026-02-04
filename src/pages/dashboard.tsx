@@ -116,7 +116,12 @@ export default function Page() {
               <div className="px-4 py-6">
                 <ProductTable />
               </div>
-            ) : activePage === "Profile" ? (
+            ): activePage === "People" ? (
+              <div className="px-4 py-6">
+                <ProductTable />
+              </div>
+            )
+             : activePage === "Profile" ? (
               <div className="px-4 py-6">
                 <Profile />
               </div>

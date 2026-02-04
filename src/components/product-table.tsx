@@ -78,7 +78,7 @@ export function ProductTable() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold">Products</h2>
+          <h2 className="text-2xl font-bold">People</h2>
           <p className="text-sm text-muted-foreground">
             Manage products (Server side table functionalities.)
           </p>

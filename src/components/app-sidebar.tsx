@@ -56,9 +56,17 @@ const data = {
       icon: SquareTerminal,
      
     },
-    {
-      title: "Product",
-      url: "/product",
+    // {
+    //   title: "Product",
+    //   url: "/product",
+    //   icon: Bot,
+     
+
+     
+    // },
+     {
+      title: "People",
+      url: "/people",
       icon: Bot,
      
 
