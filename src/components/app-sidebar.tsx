@@ -7,6 +7,7 @@ import {
   GalleryVerticalEnd,
   Map,
   PieChart,
+  Users,
   // SquareTerminal,
 } from "lucide-react"
 
@@ -21,6 +22,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
+import { MdPeople } from "react-icons/md"
 // import { Flame, Leaf, Sun } from 'lucide-react';
 
 // // This is sample data
@@ -48,54 +50,19 @@ const data = {
     },
   ],
   navMain: [
-    // {
-    //   title: "Dashboard",
-    //   url: "/dashboard",
-    //   icon: SquareTerminal,
-     
-    // },
-    // {
-    //   title: "Product",
-    //   url: "/product",
-    //   icon: Bot,
-     
 
-     
+
+
     // },
-     {
+    {
       title: "People",
       url: "/people",
-      icon: Bot,
-     
+      icon: Users,
 
-     
+
+
     },
-    // {
-    //   title: "Account",
-    //   url: "#",
-    //   icon: BookOpen,
-      
-       
-    //   items: [
-    //     {
-    //       title: "Profile",
-    //       url: "#",
-          
-    //     },
-    //     {
-    //       title: "Login",
-    //       url: "/auth/login",
-          
-    //     },
-      
-    //   ],
-    // },
-    // {
-    //   title: "Kunban",
-    //   url: "#",
-    //   icon: Settings2,
-    
-    // },
+
   ],
   projects: [
     {
