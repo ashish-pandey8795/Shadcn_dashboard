@@ -36,7 +36,7 @@ export function ActiveThemeProvider({ children }: { children: ReactNode }) {
     return 'default';
   });
 
-  // Save selected theme to localStorage
+  
   useEffect(() => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('active-theme', activeTheme);
@@ -87,3 +87,5 @@ export const useThemeConfig = () => {
   }
   return context;
 };
+
+
