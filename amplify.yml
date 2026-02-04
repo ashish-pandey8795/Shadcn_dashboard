@@ -8,22 +8,21 @@ frontend:
 
     build:
       commands:
-        # 🔴 Fail fast if env vars are missing
-        - test -n "$databaseURL"
-        - test -n "$slackBotToken"
-        - test -n "$userName"
-        - test -n "$password"
+        # 🔴 Fail fast if public auth env vars are missing
+        - test -n "$NEXT_PUBLIC_userName"
+        - test -n "$NEXT_PUBLIC_password"
 
-        # ✅ Bake env vars into Next.js runtime
-        - echo "databaseURL=$databaseURL" > .env.production
-        - echo "slackBotToken=$slackBotToken" >> .env.production
-        - echo "userName=$userName" >> .env.production
-        - echo "password=$password" >> .env.production
+        # 🧹 Clean old env files
+        - rm -f .env .env.production
 
-        # Include public vars if any (safe no-op)
-        - env | grep NEXT_PUBLIC_ >> .env.production || true
+        # ✅ Bake public env vars into Next.js
+        - echo "NEXT_PUBLIC_userName=$NEXT_PUBLIC_userName" >> .env
+        - echo "NEXT_PUBLIC_password=$NEXT_PUBLIC_password" >> .env
 
-        # Build Next.js
+        # Next.js reads .env.production in prod
+        - cp .env .env.production
+
+        # Build
         - npm run build
 
   artifacts:

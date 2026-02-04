@@ -9,8 +9,13 @@ export const loginWithEnvCredentials = (
   username: string,
   password: string
 ): boolean => {
-  const ENV_USERNAME = process.env.userName;
-  const ENV_PASSWORD = process.env.password;
+  const ENV_USERNAME = process.env.NEXT_PUBLIC_userName;
+  const ENV_PASSWORD = process.env.NEXT_PUBLIC_password;
+
+  if (!ENV_USERNAME || !ENV_PASSWORD) {
+    console.error("Missing NEXT_PUBLIC auth env vars");
+    return false;
+  }
 
   if (username === ENV_USERNAME && password === ENV_PASSWORD) {
     localStorage.setItem("isAuthenticated", "true");
