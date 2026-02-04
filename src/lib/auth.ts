@@ -9,8 +9,8 @@ export const loginWithEnvCredentials = (
   username: string,
   password: string
 ): boolean => {
-  const ENV_USERNAME = "admin";
-  const ENV_PASSWORD = "admin123";
+  const ENV_USERNAME = process.env.AUTH_USERNAME;
+  const ENV_PASSWORD = process.env.AUTH_PASSWORD;
 
   if (username === ENV_USERNAME && password === ENV_PASSWORD) {
     localStorage.setItem("isAuthenticated", "true");
