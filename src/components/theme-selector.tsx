@@ -36,7 +36,7 @@ export function ThemeSelector() {
   useEffect(() => {
     // Clear any persisted theme or just ensure it's undefined
     setActiveTheme("default");
-  }, []);
+  }, [setActiveTheme]);
 
   return (
     <div className='flex items-center gap-2'>

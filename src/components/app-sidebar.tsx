@@ -2,7 +2,6 @@ import * as React from "react"
 import {
   AudioWaveform,
   BookOpen,
-  Bot,
   Command,
   Frame,
   GalleryVerticalEnd,
@@ -23,7 +22,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { MdPeople } from "react-icons/md"
+
 // import { Flame, Leaf, Sun } from 'lucide-react';
 
 // // This is sample data

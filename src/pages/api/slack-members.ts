@@ -1,7 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import pool from "@/lib/db";
+interface SlackMember {
+  [key: string]: string | number | boolean | null;
+}
+
 type ResponseData =
-  | { success: true; data: any[] }
+  | { success: true; data: SlackMember[] }
   | { success: false; message: string };
 export default async function handler(
   req: NextApiRequest,
