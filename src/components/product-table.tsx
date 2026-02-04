@@ -14,19 +14,11 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import {
-  MoreHorizontal,
   Filter,
   Plus,
-  SlidersHorizontal,
-  Eye,
   RefreshCw,
 } from 'lucide-react';
 
@@ -47,6 +39,8 @@ type Member = {
 export function ProductTable() {
   const [members, setMembers] = useState<Member[]>([]);
   const [loading, setLoading] = useState(false);
+  const [syncLoad, setSyncLoad] = useState(false);
+
   const [selectedMember, setSelectedMember] = useState<Member | null>(null);
 
   const fetchMembers = async () => {
@@ -68,7 +62,7 @@ export function ProductTable() {
   };
 
   const syncToSlack = async () => {
-  setLoading(true);
+  setSyncLoad(true);
   try {
     const res = await fetch('/api/sync-slack', {
       method: 'POST',
@@ -86,14 +80,12 @@ export function ProductTable() {
     console.error('Slack sync error', err);
     alert('Slack sync error: ' + err);
   } finally {
-    setLoading(false);
+    setSyncLoad(false);
   }
 };
 
 
-  const viewMember = (member: Member) => {
-    setSelectedMember(member);
-  };
+
 
   return (
     <div className="bg-white dark:bg-black p-6 space-y-4">
@@ -108,14 +100,14 @@ export function ProductTable() {
 
         {/* TOP BUTTONS */}
         <div className="flex gap-2">
-          <Button onClick={fetchMembers} disabled={loading}>
+          <Button variant="outline" onClick={fetchMembers} disabled={loading} className='cursor-pointer'>
             <Plus className="w-4 h-4 mr-2" />
             {loading ? 'Fetching…' : 'Get Members'}
           </Button>
 
-          <Button variant="outline" onClick={syncToSlack} disabled={loading}>
+          <Button variant="outline" onClick={syncToSlack} disabled={syncLoad}  className='cursor-pointer'>
             <RefreshCw className="w-4 h-4 mr-2" />
-            {loading ? 'Syncing…' : 'Sync to Slack'}
+            {syncLoad ? 'Syncing…' : 'Sync to Slack'}
           </Button>
 
         </div>
@@ -146,7 +138,7 @@ export function ProductTable() {
               <TableHead>City</TableHead>
               <TableHead>State</TableHead>
               <TableHead>Last Updated</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
+            
             </TableRow>
           </TableHeader>
 
@@ -177,12 +169,7 @@ export function ProductTable() {
                   <TableCell>
                     {new Date(member.updated_at).toLocaleString()}
                   </TableCell>
-                  <TableCell className="text-right">
-                    <Button variant="ghost" size="icon" onClick={() => viewMember(member)}>
-                      <Eye className="w-4 h-4 mr-2" />
-                      View
-                    </Button>
-                  </TableCell>
+                
                 </TableRow>
               ))
             )}

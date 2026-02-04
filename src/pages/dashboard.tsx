@@ -71,7 +71,7 @@ import Profile from "@/components/Profile";
 import Kunban from "@/components/Kunban";
 
 export default function Page() {
-  const [activePage, setActivePage] = useState("Dashboard");
+  const [activePage, setActivePage] = useState("People");
 
   return (
     <SidebarProvider
@@ -112,11 +112,7 @@ export default function Page() {
                   </div>
                 </div>
               </div>
-            ) : activePage === "Product" ? (
-              <div className="px-4 py-6">
-                <ProductTable />
-              </div>
-            ): activePage === "People" ? (
+            ) : activePage === "People" ? (
               <div className="px-4 py-6">
                 <ProductTable />
               </div>

@@ -1,15 +1,13 @@
 import * as React from "react"
 import {
   AudioWaveform,
-  BookOpen,
   Bot,
   Command,
   Frame,
   GalleryVerticalEnd,
   Map,
   PieChart,
-  Settings2,
-  SquareTerminal,
+  // SquareTerminal,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -28,15 +26,15 @@ import {
 // // This is sample data
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "Safexpress",
+    email: "",
+    avatar: "",
   },
   teams: [
     {
-      name: "Acme Inc",
+      name: "Safexpress",
       logo: GalleryVerticalEnd,
-      plan: "Enterprise",
+      plan: "",
     },
     {
       name: "Acme Corp.",
@@ -50,12 +48,12 @@ const data = {
     },
   ],
   navMain: [
-    {
-      title: "Dashboard",
-      url: "/dashboard",
-      icon: SquareTerminal,
+    // {
+    //   title: "Dashboard",
+    //   url: "/dashboard",
+    //   icon: SquareTerminal,
      
-    },
+    // },
     // {
     //   title: "Product",
     //   url: "/product",
@@ -72,32 +70,32 @@ const data = {
 
      
     },
-    {
-      title: "Account",
-      url: "#",
-      icon: BookOpen,
+    // {
+    //   title: "Account",
+    //   url: "#",
+    //   icon: BookOpen,
       
        
-      items: [
-        {
-          title: "Profile",
-          url: "#",
+    //   items: [
+    //     {
+    //       title: "Profile",
+    //       url: "#",
           
-        },
-        {
-          title: "Login",
-          url: "/auth/login",
+    //     },
+    //     {
+    //       title: "Login",
+    //       url: "/auth/login",
           
-        },
+    //     },
       
-      ],
-    },
-    {
-      title: "Kunban",
-      url: "#",
-      icon: Settings2,
+    //   ],
+    // },
+    // {
+    //   title: "Kunban",
+    //   url: "#",
+    //   icon: Settings2,
     
-    },
+    // },
   ],
   projects: [
     {
