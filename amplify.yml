@@ -1,0 +1,37 @@
+version: 1
+
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+
+    build:
+      commands:
+        # 🔴 Fail fast if env vars are missing
+        - test -n "$databaseURL"
+        - test -n "$slackBotToken"
+        - test -n "$userName"
+        - test -n "$password"
+
+        # ✅ Bake env vars into Next.js runtime
+        - echo "databaseURL=$databaseURL" > .env.production
+        - echo "slackBotToken=$slackBotToken" >> .env.production
+        - echo "userName=$userName" >> .env.production
+        - echo "password=$password" >> .env.production
+
+        # Include public vars if any (safe no-op)
+        - env | grep NEXT_PUBLIC_ >> .env.production || true
+
+        # Build Next.js
+        - npm run build
+
+  artifacts:
+    baseDirectory: .next
+    files:
+      - "**/*"
+
+  cache:
+    paths:
+      - node_modules/**/*
+      - .next/cache/**/*
