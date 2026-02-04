@@ -1,6 +1,7 @@
 import * as React from "react"
 import {
   AudioWaveform,
+  BookOpen,
   Bot,
   Command,
   Frame,
@@ -58,9 +59,28 @@ const data = {
       title: "People",
       url: "/people",
       icon: Users,
+    },
+
+    {
+      title: "Account",
+      url: "#",
+      icon: BookOpen,
 
 
 
+      items: [
+        {
+          title: "Profile",
+          url: "#",
+
+        },
+        {
+          title: "Login",
+          url: "/auth/login",
+
+        },
+
+      ],
     },
 
   ],
