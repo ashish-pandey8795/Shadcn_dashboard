@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { WebClient } from "@slack/web-api";
 
-const slack = new WebClient(process.env.SLACK_BOT_TOKEN);
+const slack = new WebClient(process.env.slackBotToken);
 
 /**
  * Slack Custom Profile Field IDs

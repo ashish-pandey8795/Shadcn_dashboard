@@ -1,6 +1,6 @@
 import { Pool } from "pg";
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.databaseURL,
   ssl: {
     rejectUnauthorized: false, // AWS RDS ke liye required hota hai
   },
