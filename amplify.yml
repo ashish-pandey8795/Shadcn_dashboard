@@ -1,0 +1,30 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+
+    build:
+      commands:
+        # 👇 Write ONLY required env vars into .env.production
+        - echo "DATABASE_URL=$DATABASE_URL" >> .env.production
+        - echo "SLACK_BOT_TOKEN=$SLACK_BOT_TOKEN" >> .env.production
+        - echo "AUTH_USERNAME=$AUTH_USERNAME" >> .env.production
+        - echo "AUTH_PASSWORD=$AUTH_PASSWORD" >> .env.production
+
+        # 👇 Include all public vars automatically
+        - env | grep NEXT_PUBLIC_ >> .env.production
+
+        # 👇 Build Next.js
+        - npm run build
+
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+
+  cache:
+    paths:
+      - node_modules/**/*
+      - .next/cache/**/*
