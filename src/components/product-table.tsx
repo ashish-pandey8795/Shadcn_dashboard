@@ -1,4 +1,7 @@
+
 'use client';
+
+import { useState } from 'react';
 
 import {
   Table,
@@ -17,165 +20,251 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { MoreHorizontal, Filter, Plus, SlidersHorizontal } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import {
+  MoreHorizontal,
+  Filter,
+  Plus,
+  SlidersHorizontal,
+  Eye,
+  RefreshCw,
+} from 'lucide-react';
 
-const products = [
-  {
-    id: 1,
-    image: 'Product 1',
-    name: 'Practical Wooden Mouse',
-    category: 'Furniture',
-    price: 125.1,
-    description:
-      'The Eryn Keyboard is the latest in a series of warm products from Ortiz LLC',
-    color: 'bg-gray-200 dark:bg-gray-700',
-  },
-  {
-    id: 2,
-    image: 'Product 2',
-    name: 'Bespoke Bronze Sausages',
-    category: 'Books',
-    price: 142.29,
-    description:
-      'New maroon Mouse with ergonomic design for shrill comfort',
-    color: 'bg-yellow-300 dark:bg-yellow-800',
-  },
-  {
-    id: 3,
-    image: 'Product 3',
-    name: 'Handcrafted Aluminum Soap',
-    category: 'Groceries',
-    price: 166.2,
-    description:
-      'Our zesty-inspired Shirt brings a taste of luxury to your pale lifestyle',
-    color: 'bg-green-300 dark:bg-green-700',
-  },
-  {
-    id: 4,
-    image: 'Product 4',
-    name: 'Fresh Ceramic Chicken',
-    category: 'Clothing',
-    price: 278.79,
-    description:
-      'Our salty-inspired Table brings a taste of luxury to your flawed lifestyle',
-    color: 'bg-yellow-400 dark:bg-yellow-700',
-  },
-  {
-    id: 5,
-    image: 'Product 5',
-    name: 'Refined Concrete Chair',
-    category: 'Clothing',
-    price: 197.65,
-    description:
-      'Discover the snake-like agility of our Chips, perfect for narrow users',
-    color: 'bg-cyan-300 dark:bg-cyan-700',
-  },
-];
+type Member = {
+  member_id: string;
+  full_name: string;
+  display_name: string;
+  email: string;
+  account_type: string;
+  department: string;
+  city: string;
+  state: string;
+  title: string;
+  reporting_manager: string;
+  updated_at: string;
+};
 
 export function ProductTable() {
+  const [members, setMembers] = useState<Member[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [selectedMember, setSelectedMember] = useState<Member | null>(null);
+
+  const fetchMembers = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch('/api/slack-members');
+      const json = await res.json();
+
+      console.log('Fetched members:', json);
+
+      if (json.success) {
+        setMembers(json.data);
+      }
+    } catch (err) {
+      console.error('Fetch failed', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const syncToSlack = async () => {
+  setLoading(true);
+  try {
+    const res = await fetch('/api/sync-slack', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ members }),
+    });
+
+    const json = await res.json();
+    if (json.success) {
+      alert('Members synced to Slack successfully!');
+    } else {
+      alert('Slack sync failed: ' + json.message);
+    }
+  } catch (err) {
+    console.error('Slack sync error', err);
+    alert('Slack sync error: ' + err);
+  } finally {
+    setLoading(false);
+  }
+};
+
+
+  const viewMember = (member: Member) => {
+    setSelectedMember(member);
+  };
+
   return (
-    <div className="bg-white text-black dark:bg-black dark:text-white p-6 space-y-4">
+    <div className="bg-white dark:bg-black p-6 space-y-4">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold">People</h2>
           <p className="text-sm text-muted-foreground">
-            Manage products (Server side table functionalities.)
+            Manage Slack members
           </p>
         </div>
-        <Button variant="default">
-          <Plus className="w-4 h-4 mr-2" />
-          Add New
-        </Button>
+
+        {/* TOP BUTTONS */}
+        <div className="flex gap-2">
+          <Button onClick={fetchMembers} disabled={loading}>
+            <Plus className="w-4 h-4 mr-2" />
+            {loading ? 'Fetching…' : 'Get Members'}
+          </Button>
+
+          <Button variant="outline" onClick={syncToSlack} disabled={loading}>
+            <RefreshCw className="w-4 h-4 mr-2" />
+            {loading ? 'Syncing…' : 'Sync to Slack'}
+          </Button>
+
+        </div>
       </div>
 
       {/* Search + Filters */}
       <div className="flex gap-2">
-        <Input placeholder="Search products…" className="max-w-sm" />
-        <Button variant="outline" className=" bg-white text-black dark:bg-black dark:text-white flex items-center gap-2">
+        <Input placeholder="Search people…" className="max-w-sm" />
+        <Button variant="outline" className="flex items-center gap-2">
           <Filter className="w-4 h-4" />
-          Categories
-        </Button>
-        <Button variant="outline" className="ml-auto bg-white text-black dark:bg-black dark:text-white">
-          <SlidersHorizontal className="w-4 h-4" />
-          View
+          Department
         </Button>
       </div>
 
       {/* Table */}
-      <div className="rounded-md border border-gray-200 dark:border-gray-700">
+      <div className="rounded-md border">
         <Table>
-          <TableHeader >
-            <TableRow className='bg-white text-black dark:bg-black dark:text-white'>
-              <TableHead>Image</TableHead>
-              <TableHead>Name</TableHead>
-              <TableHead>Category</TableHead>
-              <TableHead>Price</TableHead>
-              <TableHead>Description</TableHead>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Member ID</TableHead>
+              <TableHead>Full Name</TableHead>
+              <TableHead>Display Name</TableHead>
+              <TableHead>Email</TableHead>
+              <TableHead>Account Type</TableHead>
+              <TableHead>Department</TableHead>
+              <TableHead>Title</TableHead>
+              <TableHead>Reporting Manager</TableHead>
+              <TableHead>City</TableHead>
+              <TableHead>State</TableHead>
+              <TableHead>Last Updated</TableHead>
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
+
           <TableBody>
-            {products.map((product) => (
-              <TableRow key={product.id}>
-                <TableCell>
-                  <div
-                    className={`w-16 h-16 rounded-md text-white flex items-center justify-center text-xs font-medium ${product.color}`}
-                  >
-                    {product.image}
-                  </div>
-                </TableCell>
-                <TableCell>{product.name}</TableCell>
-                <TableCell>
-                  <Badge variant="secondary">{product.category}</Badge>
-                </TableCell>
-                <TableCell>${product.price.toFixed(2)}</TableCell>
-                <TableCell className="max-w-xs truncate">
-                  {product.description}
-                </TableCell>
-                <TableCell className="text-right">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="icon">
-                        <MoreHorizontal className="w-4 h-4" />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuItem>Edit</DropdownMenuItem>
-                      <DropdownMenuItem>Delete</DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+            {members.length === 0 && !loading ? (
+              <TableRow>
+                <TableCell colSpan={11} className="text-center py-6">
+                  Click <strong>Get Members</strong> to load data
                 </TableCell>
               </TableRow>
-            ))}
+            ) : (
+              members.map((member) => (
+                <TableRow key={member.member_id}>
+                  <TableCell>{member.member_id}</TableCell>
+                  <TableCell>{member.full_name}</TableCell>
+                  <TableCell>@{member.display_name}</TableCell>
+                  <TableCell>{member.email}</TableCell>
+                  <TableCell>
+                    <Badge variant="outline">{member.account_type}</Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant="secondary">{member.department}</Badge>
+                  </TableCell>
+                  <TableCell>{member.title}</TableCell>
+                  <TableCell>{member.reporting_manager}</TableCell>
+                  <TableCell>{member.city}</TableCell>
+                  <TableCell>{member.state}</TableCell>
+                  <TableCell>
+                    {new Date(member.updated_at).toLocaleString()}
+                  </TableCell>
+                  <TableCell className="text-right">
+                    <Button variant="ghost" size="icon" onClick={() => viewMember(member)}>
+                      <Eye className="w-4 h-4 mr-2" />
+                      View
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))
+            )}
           </TableBody>
         </Table>
+
       </div>
 
-      {/* Pagination */}
-      <div className="flex items-center justify-between text-sm text-muted-foreground pt-4">
-        <div>10 row(s) total.</div>
-        <div className="flex items-center space-x-2">
-          <span>Rows per page</span>
-          <select className="border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-black dark:text-white rounded px-2 py-1 text-sm ">
-            <option>10</option>
-            <option>20</option>
-          </select>
-          <span>Page 1 of 2</span>
-          <Button variant="ghost" size="icon" disabled>
-            &laquo;
-          </Button>
-          <Button variant="ghost" size="icon" disabled>
-            &lsaquo;
-          </Button>
-          <Button variant="ghost" size="icon">
-            &rsaquo;
-          </Button>
-          <Button variant="ghost" size="icon">
-            &raquo;
-          </Button>
-        </div>
+      {/* Footer */}
+      <div className="text-sm text-muted-foreground pt-4">
+        {members.length} row(s) total.
       </div>
+
+      {/* View Member Modal */}
+      <Dialog
+        open={!!selectedMember}
+        onOpenChange={() => setSelectedMember(null)}
+      >
+        <DialogContent className="max-w-4xl">
+          {selectedMember && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="text-xl">
+                  {selectedMember.full_name}
+                </DialogTitle>
+                <p className="text-sm text-muted-foreground">
+                  @{selectedMember.display_name}
+                </p>
+              </DialogHeader>
+
+              <div className="grid grid-cols-2 gap-x-16 gap-y-4 text-sm mt-4">
+                <div>
+                  <p className="text-muted-foreground">Email</p>
+                  <p className="font-medium">{selectedMember.email}</p>
+                </div>
+
+                <div>
+                  <p className="text-muted-foreground">Account Type</p>
+                  <Badge variant="outline">
+                    {selectedMember.account_type}
+                  </Badge>
+                </div>
+
+                <div>
+                  <p className="text-muted-foreground">Department</p>
+                  <Badge variant="secondary">
+                    {selectedMember.department}
+                  </Badge>
+                </div>
+
+                <div>
+                  <p className="text-muted-foreground">Title</p>
+                  <p className="font-medium">{selectedMember.title}</p>
+                </div>
+
+                <div>
+                  <p className="text-muted-foreground">Location</p>
+                  <p className="font-medium">
+                    {selectedMember.city}, {selectedMember.state}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-muted-foreground">Reporting Manager</p>
+                  <p className="font-medium">{selectedMember.reporting_manager}</p>
+                </div>
+
+                <div className="col-span-2">
+                  <p className="text-muted-foreground">Last Updated</p>
+                  <p className="font-medium">
+                    {new Date(selectedMember.updated_at).toLocaleString()}
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
+
+
+
+
