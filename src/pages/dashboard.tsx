@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+
 import { isAuthenticated, logout } from "@/lib/auth";
 
 import { AppSidebar } from "@/components/app-sidebar";
@@ -20,13 +21,20 @@ import { ProductTable } from "@/components/product-table";
 import Profile from "@/components/Profile";
 import Kunban from "@/components/Kunban";
 
-export default function Page() {
+type ActivePage =
+  | "Dashboard"
+  | "Login"
+  | "People"
+  | "Profile"
+  | "Kunban";
+
+export default function Page(): JSX.Element {
   const router = useRouter();
-  const [activePage, setActivePage] = useState("People");
-  const [mounted, setMounted] = useState(false);
+  const [activePage, setActivePage] = useState<ActivePage>("People");
+  const [mounted, setMounted] = useState<boolean>(false);
 
   // 🔐 AUTH GUARD
-  useEffect(() => {
+  useEffect((): void => {
     if (!isAuthenticated()) {
       router.replace("/auth/login");
     } else {
@@ -34,13 +42,13 @@ export default function Page() {
     }
   }, [router]);
 
-  const handleLogout = () => {
+  const handleLogout = (): void => {
     logout();
     router.push("/auth/login");
   };
 
   // Prevent flicker
-  if (!mounted) return null;
+  if (!mounted) return <></>;
 
   return (
     <SidebarProvider
@@ -58,16 +66,11 @@ export default function Page() {
       />
 
       <SidebarInset>
-
-        <div className="bg-white dark:bg-black pt-4 sticky top-0 z-50 flex justify-between items-center px-4">
-          <SiteHeader />
-          <button
-            onClick={handleLogout}
-            className="text-sm underline text-gray-600"
-          >
-            Logout
-          </button>
+        {/* Header */}
+        <div className="bg-white dark:bg-black sticky top-6 z-50">
+          <SiteHeader onLogout={handleLogout} />
         </div>
+
         {/* Content */}
         <div className="bg-white dark:bg-black flex flex-1 flex-col">
           <div className="@container/main flex flex-1 flex-col gap-2">

@@ -114,13 +114,13 @@ export function ProductTable() {
       </div>
 
       {/* Search + Filters */}
-      <div className="flex gap-2">
+      {/* <div className="flex gap-2">
         <Input placeholder="Search people…" className="max-w-sm" />
         <Button variant="outline" className="flex items-center gap-2">
           <Filter className="w-4 h-4" />
           Department
         </Button>
-      </div>
+      </div> */}
 
       {/* Table */}
       <div className="rounded-md border">

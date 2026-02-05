@@ -60,27 +60,27 @@ const data = {
       icon: Users,
     },
 
-    {
-      title: "Account",
-      url: "#",
-      icon: BookOpen,
+    // {
+    //   title: "Account",
+    //   url: "#",
+    //   icon: BookOpen,
 
 
 
-      items: [
-        {
-          title: "Profile",
-          url: "#",
+    //   items: [
+    //     {
+    //       title: "Profile",
+    //       url: "#",
 
-        },
-        {
-          title: "Login",
-          url: "/auth/login",
+    //     },
+    //     {
+    //       title: "Login",
+    //       url: "/auth/login",
 
-        },
+    //     },
 
-      ],
-    },
+    //   ],
+    // },
 
   ],
   projects: [
