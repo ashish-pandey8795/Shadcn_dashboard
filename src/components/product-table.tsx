@@ -28,164 +28,138 @@ type Member = {
 }
 
 export function ProductTable() {
-  const [members, setMembers] = useState<Member[]>([])
-  const [loading, setLoading] = useState(false)
-  const [syncLoad, setSyncLoad] = useState(false)
+  
+  const [members, setMembers] = useState<Member[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [syncLoad, setSyncLoad] = useState(false);
 
   const fetchMembers = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
-      const res = await fetch('/api/slack-members')
-      const json = await res.json()
-      if (json.success) {
-        setMembers(json.data)
-      }
-    } catch (err) {
-      console.error('Fetch failed', err)
+      const res = await fetch("/api/slack-members");
+      const json = await res.json();
+      if (json.success) setMembers(json.data);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const syncToSlack = async () => {
-    setSyncLoad(true)
+    setSyncLoad(true);
     try {
-      const res = await fetch('/api/sync-slack', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      await fetch("/api/sync-slack", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ members }),
-      })
-      const json = await res.json()
-      if (json.success) {
-        alert('Members synced to Slack successfully!')
-      } else {
-        alert(json.message || 'Sync failed')
-      }
-    } catch (err) {
-      console.error('Sync failed', err)
+      });
     } finally {
-      setSyncLoad(false)
+      setSyncLoad(false);
     }
-  }
+  };
 
   return (
-    <div className="bg-background p-6 space-y-4">
+    <div className="bg-background text-sm rounded-xl border md:max-w-[100%]">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between px-6 py-5 border-b">
         <div>
-          <h2 className="text-2xl font-bold">People</h2>
+          <h2 className="text-2xl font-semibold">People</h2>
           <p className="text-sm text-muted-foreground">
             Manage Slack members
           </p>
         </div>
 
         <div className="flex gap-2">
-          <Button variant="outline" onClick={fetchMembers} disabled={loading}>
+          <Button
+            variant="outline"
+            onClick={fetchMembers}
+            disabled={loading}
+          >
             <Plus className="w-4 h-4 mr-2" />
-            {loading ? 'Fetching…' : 'Get Members'}
+            {loading ? "Fetching…" : "Get Members"}
           </Button>
 
-          <Button variant="outline" onClick={syncToSlack} disabled={syncLoad}>
+          <Button
+            variant="outline"
+            onClick={syncToSlack}
+            disabled={syncLoad || members.length === 0}
+          >
             <RefreshCw className="w-4 h-4 mr-2" />
-            {syncLoad ? 'Syncing…' : 'Sync to Slack'}
+            {syncLoad ? "Syncing…" : "Sync to Slack"}
           </Button>
         </div>
       </div>
 
       {/* Table */}
-      <Table>
-
-        <TableHeader>
-          <TableRow className="h-12">
-            <TableHead className="px-4 font-medium">Member ID</TableHead>
-            <TableHead className="px-4 font-medium">Full Name</TableHead>
-            <TableHead className="px-4 font-medium">Display Name</TableHead>
-            <TableHead className="px-4 font-medium">Email</TableHead>
-            <TableHead className="px-4 font-medium">Account Type</TableHead>
-            <TableHead className="px-4 font-medium">Department</TableHead>
-            <TableHead className="px-4 font-medium">Title</TableHead>
-            <TableHead className="px-4 font-medium">Reporting Manager</TableHead>
-            <TableHead className="px-4 font-medium">City</TableHead>
-            <TableHead className="px-4 font-medium">State</TableHead>
-            <TableHead className="px-4 font-medium text-right">
-              Last Updated
-            </TableHead>
-          </TableRow>
-        </TableHeader>
-
-        <TableBody>
-          {members.length === 0 ? (
-            <TableRow>
-              <TableCell
-                colSpan={11}
-                className="text-center py-10 text-muted-foreground"
-              >
-                Click <strong>Get Members</strong> to load data
-              </TableCell>
+      <div className="relative">
+        <Table>
+          <TableHeader>
+            <TableRow className="h-12">
+              <TableHead>Member ID</TableHead>
+              <TableHead>Full Name</TableHead>
+              <TableHead>Display Name</TableHead>
+              <TableHead>Email</TableHead>
+              <TableHead>Account Type</TableHead>
+              <TableHead>Department</TableHead>
+              <TableHead>Title</TableHead>
+              <TableHead>Reporting Manager</TableHead>
+              <TableHead>City</TableHead>
+              <TableHead>State</TableHead>
+              <TableHead className="text-right">Last Updated</TableHead>
             </TableRow>
-          ) : (
-            members.map((member) => (
-              <TableRow
-                key={member.member_id}
-                className="h-14 hover:bg-muted/40 transition"
-              >
-                <TableCell className="px-4 font-medium">
-                  {member.member_id}
-                </TableCell>
+          </TableHeader>
 
-                <TableCell className="px-4">
-                  {member.full_name}
-                </TableCell>
-
-                <TableCell className="px-4 text-muted-foreground">
-                  @{member.display_name}
-                </TableCell>
-
-                <TableCell className="px-4">
-                  {member.email}
-                </TableCell>
-
-                <TableCell className="px-4">
-                  <Badge variant="outline">{member.account_type}</Badge>
-                </TableCell>
-
-                <TableCell className="px-4">
-                  <Badge variant="secondary">{member.department}</Badge>
-                </TableCell>
-
-                <TableCell className="px-4">
-                  {member.title}
-                </TableCell>
-
-                <TableCell className="px-4">
-                  {member.reporting_manager}
-                </TableCell>
-
-                <TableCell className="px-4">
-                  {member.city}
-                </TableCell>
-
-                <TableCell className="px-4">
-                  {member.state}
-                </TableCell>
-
-                <TableCell className="px-4 text-right text-sm text-muted-foreground">
-                  {new Date(member.updated_at).toLocaleString()}
+          <TableBody>
+            {members.length === 0 ? (
+              <TableRow>
+                <TableCell
+                  colSpan={11}
+                  className="h-[280px] text-center text-muted-foreground"
+                >
+                  Click <strong>Get Members</strong> to load data
                 </TableCell>
               </TableRow>
-            ))
-          )}
-        </TableBody>
+            ) : (
+              members.map((m) => (
+                <TableRow
+                  key={m.member_id}
+                  className="h-14 hover:bg-muted/40 transition"
+                >
+                  <TableCell className="font-medium">
+                    {m.member_id}
+                  </TableCell>
+                  <TableCell>{m.full_name}</TableCell>
+                  <TableCell className="text-muted-foreground">
+                    @{m.display_name}
+                  </TableCell>
+                  <TableCell>{m.email}</TableCell>
+                  <TableCell>
+                    <Badge variant="outline">{m.account_type}</Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant="secondary">{m.department}</Badge>
+                  </TableCell>
+                  <TableCell>{m.title}</TableCell>
+                  <TableCell>{m.reporting_manager}</TableCell>
+                  <TableCell>{m.city}</TableCell>
+                  <TableCell>{m.state}</TableCell>
+                  <TableCell className="text-right text-muted-foreground">
+                    {new Date(m.updated_at).toLocaleString()}
+                  </TableCell>
+                </TableRow>
+              ))
+            )}
+          </TableBody>
 
-        <TableFooter>
-          <TableRow>
-            <TableCell colSpan={10}>Total Members</TableCell>
-            <TableCell className="text-right font-medium">
-              {members.length}
-            </TableCell>
-          </TableRow>
-        </TableFooter>
-      </Table>
+          <TableFooter>
+            <TableRow>
+              <TableCell colSpan={10}>Total Members</TableCell>
+              <TableCell className="text-right font-medium">
+                {members.length}
+              </TableCell>
+            </TableRow>
+          </TableFooter>
+        </Table>
+      </div>
     </div>
-  )
+    );
 }
