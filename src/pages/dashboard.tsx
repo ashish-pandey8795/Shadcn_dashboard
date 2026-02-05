@@ -3,9 +3,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-
 import { isAuthenticated, logout } from "@/lib/auth";
-
 import { AppSidebar } from "@/components/app-sidebar";
 import { ChartAreaLegend } from "@/components/ChartAreaLegend";
 import { ChartBarInteractive } from "@/components/ChartBarInteractive";
@@ -99,15 +97,15 @@ export default function Page() {
                 </div>
               </div>
             ) : activePage === "People" ? (
-              <div className="px-4 py-6">
+              <div className="px-6 py-6">
                 <ProductTable />
               </div>
             ) : activePage === "Waybill" ? (
-              <div className="px-4 py-6">
+              <div className="px-6 py-6">
               <Waybill />
               </div>
             ) : activePage === "Kanban" ? (
-              <div className="px-4 py-6">
+              <div className="px-6 py-6">
                 <Kanban />
               </div>
             ) : (
