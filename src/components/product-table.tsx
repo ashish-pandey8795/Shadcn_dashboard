@@ -122,20 +122,20 @@ export function ProductTable() {
 
       {/* Table */}
       <div className="rounded-md border">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Member ID</TableHead>
-              <TableHead>Full Name</TableHead>
-              <TableHead>Display Name</TableHead>
-              <TableHead>Email</TableHead>
-              <TableHead>Account Type</TableHead>
-              <TableHead>Department</TableHead>
-              <TableHead>Title</TableHead>
-              <TableHead>Reporting Manager</TableHead>
-              <TableHead>City</TableHead>
-              <TableHead>State</TableHead>
-              <TableHead>Last Updated</TableHead>
+        <Table >
+          <TableHeader className="bg-muted/50 sticky top-0 z-10">
+            <TableRow className="rounded-md " >
+              <TableHead className='font-bold'>Member ID</TableHead>
+              <TableHead className='font-bold'>Full Name</TableHead>
+              <TableHead className='font-bold'>Display Name</TableHead>
+              <TableHead className='font-bold'>Email</TableHead>
+              <TableHead className='font-bold'>Account Type</TableHead>
+              <TableHead className='font-bold'>Department</TableHead>
+              <TableHead className='font-bold'>Title</TableHead>
+              <TableHead className='font-bold'>Reporting Manager</TableHead>
+              <TableHead className='font-bold'>City</TableHead>
+              <TableHead className='font-bold'>State</TableHead>
+              <TableHead className='font-bold'>Last Updated</TableHead>
             
             </TableRow>
           </TableHeader>
