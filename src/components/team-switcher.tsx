@@ -115,7 +115,7 @@
 'use client';
 
 import * as React from 'react';
-import { ChevronsUpDown, Plus } from 'lucide-react';
+import {  Plus } from 'lucide-react';
 
 import {
   DropdownMenu,
@@ -173,7 +173,7 @@ export function TeamSwitcher({ teams }: { teams: Team[] }) {
                 <span className="truncate font-medium">{activeTeam.name}</span>
                 <span className="truncate text-xs">{activeTeam.plan}</span>
               </div>
-              <ChevronsUpDown className="ml-auto size-4 opacity-50" />
+              {/* <ChevronsUpDown className="ml-auto size-4 opacity-50" /> */}
             </SidebarMenuButton>
           </DropdownMenuTrigger>
 

@@ -1,26 +1,24 @@
-import * as React from "react"
+import * as React from "react";
 import {
-  AudioWaveform,
-  Command,
+  AppWindow,
   Frame,
   GalleryVerticalEnd,
   Map,
   PieChart,
   Users,
   // SquareTerminal,
-} from "lucide-react"
+} from "lucide-react";
 
-import { NavMain } from "@/components/nav-main"
+import { NavMain } from "@/components/nav-main";
 // import { NavProjects } from "@/components/nav-projects"
-import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
+// import { NavUser } from "@/components/nav-user";
+import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 // import { Flame, Leaf, Sun } from 'lucide-react';
 
@@ -49,7 +47,6 @@ const data = {
     // },
   ],
   navMain: [
-
     {
       title: "Dashboard",
       url: "/dashboard",
@@ -63,28 +60,24 @@ const data = {
       icon: Users,
     },
 
-    // {
-    //   title: "Account",
-    //   url: "#",
-    //   icon: BookOpen,
 
 
+    {
+      title: "Application",
+      url: "#",
+      icon: AppWindow,
 
-    //   items: [
-    //     {
-    //       title: "Profile",
-    //       url: "#",
-
-    //     },
-    //     {
-    //       title: "Login",
-    //       url: "/auth/login",
-
-    //     },
-
-    //   ],
-    // },
-
+      items: [
+        {
+          title: "waybill",
+          url: "#",
+        },
+        // {
+        //   title: "Login",
+        //   url: "/auth/login",
+        // },
+      ],
+    },
   ],
   projects: [
     {
@@ -103,10 +96,7 @@ const data = {
       icon: Map,
     },
   ],
-}
-
-
-
+};
 
 export function AppSidebar({
   activePage,
@@ -121,7 +111,6 @@ export function AppSidebar({
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
         {/* <TeamSwitcher teams={teams} /> */}
-
       </SidebarHeader>
       <SidebarContent>
         <NavMain
@@ -130,9 +119,9 @@ export function AppSidebar({
           setActivePage={setActivePage}
         />
       </SidebarContent>
-      <SidebarFooter>
+      {/* <SidebarFooter>
         <NavUser user={data.user} />
-      </SidebarFooter>
+      </SidebarFooter> */}
       <SidebarRail />
     </Sidebar>
   );

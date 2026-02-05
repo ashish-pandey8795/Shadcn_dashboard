@@ -35,7 +35,7 @@ export function ThemeSelector() {
 
   useEffect(() => {
     // Clear any persisted theme or just ensure it's undefined
-    setActiveTheme("default");
+    setActiveTheme("green");
   }, [setActiveTheme]);
 
   return (

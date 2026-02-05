@@ -60,7 +60,7 @@ export function NavMain({
           <Collapsible
             key={item.title}
             asChild
-            defaultOpen={item.title === "Account"}
+            defaultOpen={item.title === "Application"}
             className="group/collapsible"
           >
             <SidebarMenuItem>
@@ -84,7 +84,7 @@ export function NavMain({
                 </SidebarMenuButton>
               </CollapsibleTrigger>
 
-              {item.title === "Account" && item.items?.length ? (
+              {item.title === "Application" && item.items?.length ? (
                 <CollapsibleContent>
                   <SidebarMenuSub>
                     {item.items.map((subItem) => (

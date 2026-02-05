@@ -18,14 +18,15 @@ import {
   SidebarProvider,
 } from "@/components/ui/sidebar";
 import { ProductTable } from "@/components/product-table";
-import Profile from "@/components/Profile";
+// import Profile from "@/components/Profile";
 import Kunban from "@/components/Kunban";
+import Waybill from "@/components/Waybill";
 
 type ActivePage =
   | "Dashboard"
   | "Login"
   | "People"
-  | "Profile"
+  | "waybill"
   | "Kunban";
 
 export default function Page() {
@@ -101,9 +102,9 @@ export default function Page() {
               <div className="px-4 py-6">
                 <ProductTable />
               </div>
-            ) : activePage === "Profile" ? (
+            ) : activePage === "waybill" ? (
               <div className="px-4 py-6">
-                <Profile />
+                <Waybill />
               </div>
             ) : activePage === "Kunban" ? (
               <div className="px-4 py-6">
