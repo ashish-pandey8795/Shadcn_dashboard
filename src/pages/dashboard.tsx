@@ -19,15 +19,15 @@ import {
 } from "@/components/ui/sidebar";
 import { ProductTable } from "@/components/product-table";
 // import Profile from "@/components/Profile";
-import Kunban from "@/components/Kunban";
+import Kanban from "@/components/Kanban";
 import Waybill from "@/components/Waybill";
 
 type ActivePage =
   | "Dashboard"
   | "Login"
   | "People"
-  | "waybill"
-  | "Kunban";
+  | "Waybill"
+  | "Kanban";
 
 export default function Page() {
   const router = useRouter();
@@ -102,13 +102,13 @@ export default function Page() {
               <div className="px-4 py-6">
                 <ProductTable />
               </div>
-            ) : activePage === "waybill" ? (
+            ) : activePage === "Waybill" ? (
               <div className="px-4 py-6">
-                <Waybill />
+              <Waybill />
               </div>
-            ) : activePage === "Kunban" ? (
+            ) : activePage === "Kanban" ? (
               <div className="px-4 py-6">
-                <Kunban />
+                <Kanban />
               </div>
             ) : (
               <div className="flex flex-1 items-center justify-center text-gray-400 text-xl">

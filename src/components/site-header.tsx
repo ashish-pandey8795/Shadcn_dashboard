@@ -1,6 +1,6 @@
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { ModeToggle } from "./ModeToggle";
-import { ThemeSelector } from "./theme-selector";
+
 
 import { Button } from "./ui/button";
 
@@ -34,7 +34,7 @@ export function SiteHeader({ onLogout }: SiteHeaderProps) {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar> */}
 
-          <ThemeSelector />
+          
 
           {onLogout && (
             <Button

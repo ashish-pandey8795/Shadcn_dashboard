@@ -6,6 +6,7 @@ import {
   Map,
   PieChart,
   Users,
+  
   // SquareTerminal,
 } from "lucide-react";
 
@@ -25,13 +26,13 @@ import {
 // // This is sample data
 const data = {
   user: {
-    name: "Safexpress",
+    name: "Safexpress: Slack Central",
     email: "",
     avatar: "",
   },
   teams: [
     {
-      name: "Safexpress",
+      name: "Safexpress: Slack Central",
       logo: GalleryVerticalEnd,
       plan: "",
     },
@@ -69,7 +70,7 @@ const data = {
 
       items: [
         {
-          title: "waybill",
+          title: "Waybill",
           url: "#",
         },
         // {

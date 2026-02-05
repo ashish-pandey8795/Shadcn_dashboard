@@ -41,7 +41,7 @@ export function NavMain({
   const [activeAccountSub, setActiveAccountSub] = useState<string | null>(null);
 
   const handleMainClick = (title: string) => {
-    if (["Dashboard", "Kunban","People"].includes(title)) {
+    if (["Dashboard", "Kanban","People"].includes(title)) {
       setActivePage(title);
       setActiveAccountSub(null);
     }
@@ -54,7 +54,7 @@ export function NavMain({
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+      <SidebarGroupLabel></SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible
@@ -69,7 +69,7 @@ export function NavMain({
                   tooltip={item.title}
                   onClick={() => handleMainClick(item.title)}
                   className={
-                    ["Dashboard", "Kunban","People"].includes(item.title) &&
+                    ["Dashboard", "Kanban","People"].includes(item.title) &&
                     activePage === item.title
                       ? "bg-muted"
                       : ""
