@@ -4,7 +4,7 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableFooter,
+
   TableHead,
   TableHeader,
   TableRow,
@@ -60,7 +60,7 @@ export function ProductTable() {
   return (
     <div className="bg-background text-sm rounded-xl border md:max-w-[100%]">
       {/* Header */}
-      <div className="flex items-center justify-between px-6 py-5 border-b">
+      <div className="flex items-center justify-between px-6 py-5 border-b bg-muted/40">
         <div>
           <h2 className="text-2xl font-semibold">People</h2>
           <p className="text-sm text-muted-foreground">
@@ -149,15 +149,6 @@ export function ProductTable() {
               ))
             )}
           </TableBody>
-
-          <TableFooter>
-            <TableRow>
-              <TableCell colSpan={10}>Total Members</TableCell>
-              <TableCell className="text-right font-medium">
-                {members.length}
-              </TableCell>
-            </TableRow>
-          </TableFooter>
         </Table>
       </div>
     </div>

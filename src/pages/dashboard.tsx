@@ -15,7 +15,7 @@ import {
   SidebarInset,
   SidebarProvider,
 } from "@/components/ui/sidebar";
-import { ProductTable } from "@/components/product-table";
+import { ProductTable } from "@/components/people-table";
 // import Profile from "@/components/Profile";
 import Kanban from "@/components/Kanban";
 import Waybill from "@/components/Waybill";
