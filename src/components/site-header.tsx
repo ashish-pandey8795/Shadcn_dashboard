@@ -1,25 +1,14 @@
-
-import Link from "next/link";
-import { FaGithub } from "react-icons/fa";
-
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { ModeToggle } from "./ModeToggle";
 import { ThemeSelector } from "./theme-selector";
-import SearchInput from "./SearchInput";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "./ui/avatar";
+
 import { Button } from "./ui/button";
 
 interface SiteHeaderProps {
   onLogout?: () => void;
 }
 
-export function SiteHeader({
-  onLogout,
-}: SiteHeaderProps): JSX.Element {
+export function SiteHeader({ onLogout }: SiteHeaderProps) {
   return (
     <header className="bg-white text-black dark:bg-black dark:text-white flex h-[var(--header-height)] sticky top-0 z-50 w-full items-center">
       <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">

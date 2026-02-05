@@ -28,7 +28,7 @@ type ActivePage =
   | "Profile"
   | "Kunban";
 
-export default function Page(): JSX.Element {
+export default function Page() {
   const router = useRouter();
   const [activePage, setActivePage] = useState<ActivePage>("People");
   const [mounted, setMounted] = useState<boolean>(false);
@@ -62,7 +62,7 @@ export default function Page(): JSX.Element {
     >
       <AppSidebar
         activePage={activePage}
-        setActivePage={setActivePage}
+       setActivePage={(title) => setActivePage(title as ActivePage)}
       />
 
       <SidebarInset>
