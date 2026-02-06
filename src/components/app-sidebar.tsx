@@ -79,6 +79,12 @@ const data = {
         // },
       ],
     },
+
+    {
+      title: "Logs",
+      url: "/logs",
+      icon: Users,
+    },
   ],
   projects: [
     {

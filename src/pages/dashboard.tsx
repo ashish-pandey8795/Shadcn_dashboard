@@ -19,12 +19,14 @@ import { ProductTable } from "@/components/people-table";
 // import Profile from "@/components/Profile";
 import Kanban from "@/components/Kanban";
 import Waybill from "@/components/Waybill";
+import { LogsTable } from "@/components/LogsTable";
 
 type ActivePage =
   | "Dashboard"
   | "Login"
   | "People"
   | "Waybill"
+  | "Logs"
   | "Kanban";
 
 export default function Page() {
@@ -61,7 +63,7 @@ export default function Page() {
     >
       <AppSidebar
         activePage={activePage}
-       setActivePage={(title) => setActivePage(title as ActivePage)}
+        setActivePage={(title) => setActivePage(title as ActivePage)}
       />
 
       <SidebarInset>
@@ -102,7 +104,11 @@ export default function Page() {
               </div>
             ) : activePage === "Waybill" ? (
               <div className="px-6 py-6">
-              <Waybill />
+                <Waybill />
+              </div>
+            ) : activePage === "Logs" ? (
+              <div className="px-6 py-6">
+                <LogsTable />
               </div>
             ) : activePage === "Kanban" ? (
               <div className="px-6 py-6">
