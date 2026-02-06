@@ -6,7 +6,7 @@ import {
   Map,
   PieChart,
   Users,
-  
+  FileText,
   // SquareTerminal,
 } from "lucide-react";
 
@@ -83,7 +83,7 @@ const data = {
     {
       title: "Logs",
       url: "/logs",
-      icon: Users,
+      icon: FileText,
     },
   ],
   projects: [

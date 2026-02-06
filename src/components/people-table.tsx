@@ -94,11 +94,11 @@ export function ProductTable() {
   };
 
   // Available filter options
-  const options = {
-    account_type: [...new Set(members.map((m) => m.account_type))],
-    department: [...new Set(members.map((m) => m.department))],
-    title: [...new Set(members.map((m) => m.title))],
-  };
+  // const options = {
+  //   account_type: [...new Set(members.map((m) => m.account_type))],
+  //   department: [...new Set(members.map((m) => m.department))],
+  //   title: [...new Set(members.map((m) => m.title))],
+  // };
 
   const labels: Record<FilterKey, string> = {
     account_type: "Account Type",
@@ -120,11 +120,17 @@ export function ProductTable() {
     });
   };
 
+  // const availableFilters: FilterKey[] = [
+  //   "account_type",
+  //   "department",
+  //   "title",
+  // ].filter((f) => !activeFilters.includes(f));
+
   const availableFilters: FilterKey[] = [
     "account_type",
     "department",
     "title",
-  ].filter((f) => !activeFilters.includes(f));
+  ];
 
   // Filter members by active filters and date range
   const filteredMembers = members.filter((m) => {
